@@ -1,0 +1,1051 @@
+<?php
+get_header();
+	if( have_rows('acf_flx_hp_page_content') ):
+	    while ( have_rows('acf_flx_hp_page_content') ) : the_row();
+	        if( get_row_layout() == 'acf_flx_hp_hs_hero_section' ):
+	        	?>
+	        		<div class="relative">
+					   <div class="max-w-screen-2xl px-5 mx-auto pt-[120px]">
+					      <div class="flex flex-col items-center justify-center text-center max-w-8xl w-full mx-auto">
+					         <div class="overflow-hidden w-full">
+					            <div class="h-[100px] w-[311px] mb-[46px] mx-auto rounded-full overflow-hidden">
+					               <video class="w-full h-full object-cover" autoplay="" loop="" muted="">
+					                  <source src="<?php echo get_sub_field("acf_flx_hp_hs_video_file"); ?>" type="video/mp4" />
+					               </video>
+					            </div>
+					         </div>
+					         <h1
+					            class="font-criteria text-[18px] sm:text-[24px] md:text-[38px] lg:text-[55px] xl:text-[64px] leading-[28px] sm:leading-[35px] md:leading-[50px] lg:leading-[70px] xl:leading-[89px] font-semibold text-grayDark dark:text-white mb-6 md:mb-[42px]"
+					            >
+					            <?php echo get_sub_field("acf_flx_hp_hs_section_slider"); ?>
+					            <div class="spaceboots">🚀</div>
+					         </h1>
+					         <div class="flex flex-col md:max-w-4xl text-base md:text-xl xl:text-[28px] mb-[30px]">
+					            <p class="font-sans text-sm leading-[24px] sm:text-[20px] sm:leading-[35px] md:text-[28px] md:leading-[45px] text-content dark:text-white">
+					               <?php echo get_sub_field("acf_flx_hp_hs_section_sub_title"); ?>
+					            </p>
+					         </div>
+					         <div>
+					         	<a href="<?php echo get_sub_field("acf_flx_hp_hs_button_url"); ?>"><button class="relative capitalize px-6 py-4 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg group font-bold text-sm leading-[24px] sm:text-base sm:leading-[26px] text-black bg-primary transition-all duration-300"
+						               >
+						            <span><?php echo get_sub_field("acf_flx_hp_hs_button_title"); ?></span>
+						            <span
+						               class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"
+						               ></span>
+						            </button>
+						        </a>
+					         </div>
+					      </div>
+					   </div>
+					</div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_cwws_client_we_work_with_section' ): 
+	        	?>
+	        		<div class="max-w-screen-2xl px-5 mx-auto [mask:linear-gradient(90deg,transparent,white_20%,white_80%,transparent)] w-full">
+                		<h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-criteria font-semibold dark:text-white text-grayDark pb-6 !leading-[1] sm:pb-10 md:pb-[60px] text-center">
+					      <?php echo get_sub_field("acf_flx_hp_cwws_section_title"); ?>
+					   </h2>
+					   <div class="w-max flex flex-row gap-24 brand-animation">
+					   		<?php
+							  if( have_rows('acf_flx_hp_cwws_section_listing') ):
+							    while( have_rows('acf_flx_hp_cwws_section_listing') ) : the_row();
+							    	echo get_sub_field("acf_flx_hp_cwws_listing_image"); 
+							    endwhile;
+							  endif;
+							?>
+					   </div>
+					</div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_ftuss_founders_of_the_ux_space_section' ): 
+	        	?>
+	        		<section>
+		                <div class="max-w-screen-2xl px-5 mx-auto founder--scroll">
+		                    <div class="max-w-[1263px] mx-auto flex items-center justify-between flex-col-reverse xl:flex-row gap-10 sm:gap-16">
+		                        <div class="flex items-center flex-col sm:flex-row xl:flex-col gap-6 sm:gap-12 xl:gap-0">
+		                            <div class="flex items-center">
+					            	<?php
+					            		if( get_sub_field("acf_flx_hp_ftuss_section_images") )
+					            		{
+					            			foreach( get_sub_field("acf_flx_hp_ftuss_section_images") as $gallery )
+					            			{
+					            				?>
+					            					<img class="object-cover w-[52px] h-[52px] -mx-1 rounded-full ring ring-white dark:ring-[#050404]" src="<?php echo $gallery["url"]; ?>" alt="<?php echo $gallery["alt"]; ?>"/>
+					            				<?php
+					            			}
+					            		}
+					            	?>
+					            </div>
+					            <h2 class="dark:text-white font-criteria text-grayDark xl:pt-3.5 text-sm leading-[24px] sm:text-2xl sm:leading-[1.54] font-semibold w-44 max-w-full text-center sm:text-left">
+					               <?php echo get_sub_field("acf_flx_hp_ftuss_section_title"); ?>
+					            </h2>
+					         </div>
+					         <p
+					            class="dark:text-white founder--scroll-text text-content text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl font-normal xl:w-[874px] max-w-full xl:text-left text-center"
+					            >
+					            	<?php echo get_sub_field("acf_flx_hp_ftuss_section_content"); ?>
+					         </p>
+					      </div>
+					   </div>
+					</section>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_cs_consulting_section' ): 
+	        	?>
+	        		<h2 class="text--scroll relative mx-auto hidden xl:flex text-center capitalize whitespace-nowrap font-bold italic tracking-[2px]">
+					   <?php echo get_sub_field("acf_flx_hp_cs_section_content"); ?>
+					</h2>
+
+					<!-- User Consulting -->
+		            <h2 class="relative mx-auto text-center text-3xl flex xl:hidden capitalize font-bold italic tracking-[2px]">
+		                <?php echo get_sub_field("acf_flx_hp_cs_section_content"); ?>
+		            </h2>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_oss_our_services_section' ): 
+	        	?>
+	        		<div class="max-w-screen-2xl px-5 mx-auto h-full">
+		                <div class="flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8 text-center">
+		                    <h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+					         	<?php echo get_sub_field("acf_flx_hp_oss_section_title"); ?>
+					      	</h2>
+					      	<p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+					         <?php echo get_sub_field("acf_flx_hp_oss_section_content"); ?>
+					      	</p>
+					      	<div class="hidden xl:flex" style="opacity: 1;">
+		                        <div class="w-full min-w-[72rem] max-w-7xl pt-7 relative z-10">
+		                            <div role="tablist" class="bg-transparent opacity-100 gap-4 dark:bg-transparent flex justify-between items-center w-full services-tabs">
+						            	<?php
+										  	if( have_rows('acf_flx_hp_oss_section_listing') ):
+										  		$cnt=1;
+									    		while( have_rows('acf_flx_hp_oss_section_listing') ) : the_row();
+											    	?>
+											    		<button
+										                  type="button"
+										                  role="tab"
+										                  aria-selected="true"
+										                  data-state="<?php if( $cnt == 1 ){ echo "active"; }else{ echo "active"; }?>"
+										                  class="text-lg relative transition-all opacity-50 font-bold group text-grayDark hover:opacity-100 dark:text-white duration-200 aria-selected:opacity-100"
+										                  tabindex="-1"
+										                  id="tab-<?php echo $cnt; ?>"
+										                  value="<?php echo str_replace(" ", "", get_sub_field("acf_flx_hp_oss_listing_title")); ?>"
+										                  >
+										                  <div class="relative overflow-hidden">
+										                     <span class="group-hover:translate-y-full group-hover:rotate-[16deg] transition-all origin-bottom-left duration-500 inline-block pointer-events-none">
+										                     <?php echo get_sub_field("acf_flx_hp_oss_listing_title"); ?>
+										                     </span>
+										                     <span
+										                        class="absolute bottom-full left-0 -rotate-[16deg] group-hover:rotate-0 origin-bottom-left group-hover:translate-y-full transition-all duration-500 pointer-events-none"
+										                        >
+										                     <?php echo get_sub_field("acf_flx_hp_oss_listing_title"); ?>
+										                     </span>
+										                  </div>
+										                  <span
+										                     class="w-full scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 h-0.5 bg-primary absolute left-0 -bottom-1 rounded-full"
+										                     ></span>
+										               </button>
+											    	<?php
+										    	$cnt++;
+										    	endwhile;
+										  	endif;
+										?>					               
+					            	</div>
+						            <div class="relative mt-24 h-80 w-full">
+						            	<?php
+										  if( have_rows('acf_flx_hp_oss_section_listing') ):
+										    while( have_rows('acf_flx_hp_oss_section_listing') ) : the_row();
+										    	?>
+										    		<div
+									                  data-state="<?php if( $cnt == 1 ){ echo "active"; }else{ echo "active"; }?>"
+									                  role="tabpanel"
+									                  id="tabpanel-1"
+									                  tabindex="0"
+									                  class="absolute top-1/2 transition-all duration-500 -translate-y-1/2 left-0 w-full h-full"
+									                  value="<?php echo str_replace(" ", "", get_sub_field("acf_flx_hp_oss_listing_title")); ?>"
+									                  >
+									                  <div class="flex justify-between items-center">
+									                     <div class="flex gap-12 items-center">
+									                        <?php echo get_sub_field("acf_flx_hp_oss_listing_image"); ?>
+									                        <div class="flex flex-col gap-6 items-start text-left max-w-lg">
+									                           <h3 class="text-[28px] font-criteria font-semibold">
+									                              <?php echo get_sub_field("acf_flx_hp_oss_listing_content_title"); ?>
+									                           </h3>
+									                           <p class="md:text-lg md:leading-8">
+									                              <?php echo get_sub_field("acf_flx_hp_oss_listing_content"); ?>
+									                           </p>
+									                           <a
+									                              class="dark:text-primary text-black text-lg underline hover:tracking-wider transition-all duration-300 hover:no-underline font-semibold"
+									                              href="<?php echo get_sub_field("acf_flx_hp_oss_link_url"); ?>"
+									                              >
+									                           <?php echo get_sub_field("acf_flx_hp_oss_link_title"); ?>
+									                           </a>
+									                        </div>
+									                     </div>
+									                     <div class="flex flex-col gap-4 md:gap-6 text-left">
+									                     	<?php
+															  if( have_rows('acf_flx_hp_oss_content_listing') ):
+															    while( have_rows('acf_flx_hp_oss_content_listing') ) : the_row();
+															    	?>
+															    		<div class="flex md:text-lg gap-4 items-center"><span class="w-4 h-0.5 bg-primary rounded-full"></span><span><?php echo get_sub_field("acf_flx_hp_oss_content_listing_title"); ?></span></div>
+															    	<?php
+															    endwhile;
+															  endif;
+															?>
+									                     </div>
+									                  </div>
+									               </div>
+										    	<?PHP
+										    endwhile;
+										  endif;
+										?>					               
+						         	</div>
+					      		</div>
+					   		</div>
+					   		<div class="flex xl:hidden w-full">
+		                        <div class="w-full">
+		                        	<?php
+									  if( have_rows('acf_flx_hp_oss_section_listing') ):
+									  	$cnt=1;
+									    while( have_rows('acf_flx_hp_oss_section_listing') ) : the_row();
+									    	?>
+									    		<div class="pb-4">
+					                                <h3 data-orientation="vertical" data-state="closed" class="flex border-b border-solid border-[#202020]">
+					                                    <button type="button" class="accordion-button flex items-center w-full pb-2 font-bold transition-all duration-500 text-sm text-grayDark dark:text-white">
+					                                        <em class="accordion-icon inline-block min-w-[20px] mr-2 leading-[0] transition-all duration-500">
+					                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					                                                <path
+					                                                    d="M3.39961 7.45846L8.83294 12.8918C9.47461 13.5335 10.5246 13.5335 11.1663 12.8918L16.5996 7.45846"
+					                                                    class="stroke-grayDark dark:stroke-[#C0C0C0]"
+					                                                    stroke-width="2"
+					                                                    stroke-miterlimit="10"
+					                                                    stroke-linecap="round"
+					                                                    stroke-linejoin="round"
+					                                                />
+					                                            </svg>
+					                                        </em>
+					                                        <?php echo get_sub_field("acf_flx_hp_oss_listing_title"); ?>
+					                                    </button>
+					                                </h3>
+					                                <div class="accordion-content overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+					                                    <div class="pb-4 pt-5">
+					                                        <?php echo get_sub_field("acf_flx_hp_oss_listing_image"); ?>
+					                                    </div>
+					                                    <div class="text-left">
+					                                        <h3 class="text-sm text-left font-semibold leading-6 pb-2 text-grayDark dark:text-primary">
+					                                            <?php echo get_sub_field("acf_flx_hp_oss_listing_content_title"); ?>
+					                                        </h3>
+					                                        <p class="text-sm text-left leading-6 font-normal pb-5 text-grayDark dark:text-white">
+					                                            <?php echo get_sub_field("acf_flx_hp_oss_listing_content"); ?>
+					                                        </p>
+					                                        <ul>
+					                                        	<?php
+																  	if( have_rows('acf_flx_hp_oss_content_listing') ):
+																	    while( have_rows('acf_flx_hp_oss_content_listing') ) : the_row();
+																	    	?>
+																	    		<li class="flex pb-4 items-center text-sm font-semibold leading-6 tracking-[0.5px] text-grayDark dark:text-white">
+									                                                <span class="w-[15px] h-[1.5px] bg-primary mr-4"></span>
+									                                                <span><?php echo get_sub_field("acf_flx_hp_oss_content_listing_title"); ?></span>
+									                                            </li>
+																	    	<?php
+																	    endwhile;
+																  	endif;
+																?>
+					                                        </ul>
+					                                        <a class="dark:text-primary leading-6 text-left text-grayDark text-sm underline hover:tracking-wider transition-all duration-500 hover:no-underline font-semibold" href="<?php echo get_sub_field("acf_flx_hp_oss_link_url"); ?>"><?php echo get_sub_field("acf_flx_hp_oss_link_title"); ?></a>
+					                                    </div>
+					                                </div>
+					                            </div>
+									    	<?php
+									    	$cnt++;
+									    endwhile;
+									  endif;
+									?>
+		                        </div>
+	                    	</div>
+						</div>
+					</div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_sfc_schedule_free_consultation' ): 
+	        	?>
+	        		<div class="relative overflow-hidden z-10 gallery--scroll">
+		                <div class="w-full mt-[60px] gap-24 hidden grid-cols-2 lg:grid">
+		                    <div class="w-full gallery--scroll-img-1 relative z-20 xl:h-[750px] lg:h-[500px] bg-gray-200 rounded-3xl rounded-l-none overflow-hidden" style="transform: none;">
+		                        <img alt="" loading="lazy" width="1000" height="750" decoding="async" data-nimg="1" class="h-full w-full object-cover" style="color: transparent;" src="<?php echo get_sub_field("acf_flx_hp_sfc_image_1") ?>" />
+		                    </div>
+		                    <div class="w-full gallery--scroll-img-2 relative z-20 xl:h-[750px] lg:h-[500px] bg-gray-200 rounded-3xl rounded-r- overflow-hidden" style="transform: none;">
+		                        <img alt="" loading="lazy" width="1000" height="750" decoding="async" data-nimg="1" class="h-full w-full object-cover" style="color: transparent;" src="<?php echo get_sub_field("acf_flx_hp_sfc_image_2") ?>" />
+		                    </div>
+		                    <div class="w-full gallery--scroll-img-3 relative z-20 xl:h-[750px] lg:h-[500px] bg-gray-200 rounded-3xl rounded-l-none overflow-hidden" style="transform: none;">
+		                        <img alt="" loading="lazy" width="1000" height="750" decoding="async" data-nimg="1" class="h-full w-full object-cover" style="color: transparent;" src="<?php echo get_sub_field("acf_flx_hp_sfc_image_3") ?>" />
+		                    </div>
+		                    <div class="w-full gallery--scroll-img-4 relative z-20 xl:h-[750px] lg:h-[500px] bg-gray-200 rounded-3xl rounded-r-none overflow-hidden" style="transform: none;">
+		                        <img alt="" loading="lazy" width="1000" height="750" decoding="async" data-nimg="1" class="h-full w-full object-cover" style="color: transparent;" src="<?php echo get_sub_field("acf_flx_hp_sfc_image_4") ?>" />
+		                    </div>
+		                    <div class="absolute gallery--scroll-text -z-0 top-1/2 left-1/2 max-w-[520px] text-center -translate-x-1/2 -translate-y-1/2">
+		                        <div class="flex flex-col gap-4 items-center">
+		                            <h3 class="text-4xl leading-tight font-criteria font-semibold">
+		                                <?php echo get_sub_field("acf_flx_hp_sfc_section_title"); ?>
+		                            </h3>
+		                            <p class="text-xl leading-[1.6]">
+		                                <?php echo get_sub_field("acf_flx_hp_sfc_section_content"); ?>
+		                            </p>
+		                            <div class="mt-5">
+		                            	<a href="<?php echo get_sub_field("acf_flx_hp_sfc_button_url"); ?>">
+			                                <button
+			                                    class="relative capitalize px-6 py-4 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg group font-bold text-sm leading-[24px] sm:text-base sm:leading-[26px] text-black bg-primary transition-all duration-300"
+			                                >
+			                                    <span><?php echo get_sub_field("acf_flx_hp_sfc_button_title"); ?></span>
+			                                    <span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+			                                </button>
+			                            </a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="w-full mt-[60px] px-5 gallery--scroll-2 gap-8 grid lg:hidden grid-cols-1">
+		                    <div class="w-full gallery--scroll-2-img-1 h-[480px] bg-gray-200 rounded-3xl relative z-0 overflow-hidden">
+		                        <img alt="" loading="lazy" width="1000" height="750" decoding="async" data-nimg="1" class="h-full w-full object-cover" style="color: transparent;" src="<?php echo get_sub_field("acf_flx_hp_sfc_image_1") ?>" />
+		                    </div>
+		                    <div class="w-full h-[480px] gallery--scroll-2-img-2 bg-gray-200 rounded-3xl overflow-hidden">
+		                        <img alt="" loading="lazy" width="1000" height="750" decoding="async" data-nimg="1" class="h-full w-full object-cover" style="color: transparent;" src="<?php echo get_sub_field("acf_flx_hp_sfc_image_2") ?>" />
+		                    </div>
+		                    <div class="w-full gallery--scroll-2-img-3 h-[480px] bg-gray-200 rounded-3xl overflow-hidden">
+		                        <img alt="" loading="lazy" width="1000" height="750" decoding="async" data-nimg="1" class="h-full w-full object-cover" style="color: transparent;" src="<?php echo get_sub_field("acf_flx_hp_sfc_image_3") ?>" />
+		                    </div>
+		                    <div class="w-full gallery--scroll-2-img-4 h-[480px] bg-gray-200 rounded-3xl overflow-hidden">
+		                        <img alt="" loading="lazy" width="1000" height="750" decoding="async" data-nimg="1" class="h-full w-full object-cover" style="color: transparent;" src="<?php echo get_sub_field("acf_flx_hp_sfc_image_4") ?>" />
+		                    </div>
+		                    <div class="absolute top-1/2 max-w-[520px] gallery--scroll-2-text -z-10 left-1/2 w-full text-center -translate-x-1/2 -translate-y-0">
+		                        <div class="flex flex-col gap-4 items-center">
+		                            <h3 class="text-2xl leading-tight font-criteria font-semibold">
+		                                <?php echo get_sub_field("acf_flx_hp_sfc_section_title"); ?>
+		                            </h3>
+		                            <p class="text-lg leading-[1.6]">
+		                                <?php echo get_sub_field("acf_flx_hp_sfc_section_content"); ?>
+		                            </p>
+		                            <div class="mt-5">
+		                            	<a href="<?php echo get_sub_field("acf_flx_hp_sfc_button_url"); ?>">
+			                                <button
+			                                    class="relative capitalize px-6 py-4 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg group font-bold text-sm leading-[24px] sm:text-base sm:leading-[26px] text-black bg-primary transition-all duration-300"
+			                                >
+			                                    <span><?php echo get_sub_field("acf_flx_hp_sfc_button_title"); ?></span>
+			                                    <span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+			                                </button>
+			                            </a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_veads_versatile_expertise_across_diverse_section' ): 
+	        	?>
+	        		<div class="w-full px-5 sm:px-0">
+		                <div class="w-[885px] max-w-full mx-auto text-center md:pb-20 pb-0 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8r">
+		                    <h2 class="dark:text-white text-grayDark text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+		                        <?php echo get_sub_field("acf_flx_hp_veads_section_title"); ?>
+		                    </h2>
+		                    <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+		                        <?php echo get_sub_field("acf_flx_hp_veads_section_content"); ?>
+		                    </p>
+		                </div>
+		                <div class="swiper expertise-slider w-full overflow-hidden py-10">
+		                    <div class="swiper-wrapper w-full [&>*:nth-child(even)]:!translate-y-10 [&>*:nth-child(odd)]:!-translate-y-10">
+		                    	<?php
+								  if( have_rows('acf_flx_hp_veads_section_listing') ):
+								    	while( have_rows('acf_flx_hp_veads_section_listing') ) : the_row();
+								    		$listing_image = WPCustomClass::GetAcfImage(get_sub_field("acf_flx_hp_veads_listing_image"),"vector-1.svg");
+									    	?>
+										         <div class="swiper-slide !w-fit">
+						                            <div
+						                                class="rounded-2xl w-[320px] md:w-[497px] hover:scal max-w-full group transition-all duration-500 border border-solid border-[#C6C6C6] dark:border-[#A1A1A1] hover:scale-95 hover:dark:border-[#232020] md:shadow-expertCards md:py-20 md:px-10 relative py-[30px] px-[22px] overflow-hidden"
+						                            >
+						                                <span class="w-16 scale-0 h-16 group-hover:scale-[20] transition-all duration-500 bg-[#FBFBFB] dark:bg-[#232020] -translate-x-1/2 absolute bottom-0 left-1/2 rounded-full"></span>
+						                                <div class="md:min-w-[263px] relative z-10 min-w-[156px] text-center">
+						                                    <img src="<?php echo $listing_image["image_url"]; ?>" class="block mx-auto grayscale group-hover:grayscale-0 transition-all duration-500" alt="<?php echo $listing_image["image_alt"]; ?>" />
+						                                </div>
+						                                <div class="md:pt-[51px] pt-3 relative z-10">
+						                                    <h5 class="md:text-[30px] text-base font-extrabold md:leading-10 leading-[26px] text-grayDark dark:text-white md:pb-[10px] pb-1 transition-all duration-500 group-hover:text-primary">
+						                                        <?php echo get_sub_field("acf_flx_hp_veads_listing_title"); ?>
+						                                    </h5>
+						                                    <p class="md:text-lg md:leading-7 text-xs leading-[22px] font-normal text-content dark:text-white">
+						                                        <?php echo get_sub_field("acf_flx_hp_veads_listing_content"); ?>
+						                                    </p>
+						                                </div>
+						                            </div>
+						                        </div>
+									    	<?php
+								    	endwhile;
+								  endif;
+								?>
+		                    </div>
+		                    <div class="swiper-pagination slider-pagination md:hidden block"></div>
+		                </div>
+		            </div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_odds_our_dashboard_design_section' ): 
+	        	?>
+	        		<!-- dashboard section -->
+			            <div class="max-w-screen-2xl px-5 mx-auto h-full">
+
+			                <div class="flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8 text-center">
+			                    <h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+			                        <?php echo get_sub_field("acf_flx_hp_odds_section_title"); ?>
+			                    </h2>
+			                    <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+			                        <?php echo get_sub_field("acf_flx_hp_odds_section_content"); ?>
+			                    </p>
+			                    <div class="flex flex-col md:flex-row gap-8 items-center text-left mt-4 md:mt-0">
+			                    	<?php
+			                    		$case_study = get_sub_field("acf_flx_hp_odds_select_casestudy");
+
+			                    		if( $case_study )
+			                    		{
+			                    			foreach( $case_study as $case_study_list )
+			                    			{
+			                    				$listImage = get_stylesheet_directory_uri()."/assets/images/dashboard-img-1.png";
+
+												if( has_post_thumbnail($case_study_list->ID) )
+												{
+													$listImage = get_the_post_thumbnail_url( $case_study_list->ID, 'full' );
+												}
+			                    				?>
+			                    					<div class="flex-1">
+							                            <div class="md:h-96 xl:h-[870px] rounded-2xl w-full overflow-hidden">
+							                                <img src="<?php echo $listImage; ?>" alt="img" loading="lazy" class="w-full h-full object-cover" />
+							                            </div>
+							                            <p class="mt-6 mb-1 text-lg font-semibold dark:text-primary">
+							                                Case Study
+							                            </p>
+							                            <h4 class="text-2xl font-semibold"><?php echo get_the_title( $case_study_list->ID ); ?></h4>
+							                            <p class="mt-3 text-base text-[#28303F] dark:text-[#fff] opacity-80">
+							                                <?php echo get_the_excerpt( $case_study_list->ID ); ?>
+							                            </p>
+							                            <a href="<?php echo get_the_permalink( $case_study_list->ID); ?>">
+								                            <button
+								                                class="relative capitalize text-sm px-4 py-2 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg mt-5 group font-semibold text-black bg-primary transition-all duration-300 undefined"
+								                            >
+								                                <span>Read More</span><span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+								                            </button>
+								                        </a>
+							                        </div>
+			                    				<?php
+			                    			}
+			                    		}
+			                    	?>			                        
+			                    </div>
+			                </div>
+			            </div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_wcs_why_choose_section' ): 
+	        	?>
+	        		<div class="max-w-screen-2xl px-5 mx-auto">
+		                <div class="flex flex-col rounded-2xl border-[#C6C6C6] dark:border-[#4b4b4b] py-2 md:py-[60px] border relative">
+		                    <!-- Background Lines -->
+		                    <svg class="absolute pointer-events-none top-0 left-0 w-full h-auto" xmlns="http://www.w3.org/2000/svg" width="1508" height="832" viewBox="0 0 1508 832" fill="none">
+		                        <g opacity="0.1">
+		                            <rect opacity="0.125" width="75" height="832" fill="url(#paint0_linear_1452_2068)" />
+		                            <rect opacity="0.15" x="95" width="76" height="822.195" fill="url(#paint1_linear_1452_2068)" />
+		                            <rect opacity="0.3" x="191" width="75" height="799.784" fill="url(#paint2_linear_1452_2068)" />
+		                            <rect opacity="0.45" x="286" width="75" height="668.121" fill="url(#paint3_linear_1452_2068)" />
+		                            <rect opacity="0.45" x="390" width="75" height="832" fill="url(#paint4_linear_1452_2068)" />
+		                            <rect opacity="0.3" x="485" width="76" height="822.195" fill="url(#paint5_linear_1452_2068)" />
+		                            <rect opacity="0.15" x="581" width="75" height="799.784" fill="url(#paint6_linear_1452_2068)" />
+		                            <rect opacity="0.125" x="676" width="75" height="668.121" fill="url(#paint7_linear_1452_2068)" />
+		                        </g>
+		                        <g opacity="0.1">
+		                            <rect opacity="0.125" x="757" width="75" height="832" fill="url(#paint8_linear_1452_2068)" />
+		                            <rect opacity="0.15" x="852" width="76" height="822.195" fill="url(#paint9_linear_1452_2068)" />
+		                            <rect opacity="0.3" x="948" width="75" height="799.784" fill="url(#paint10_linear_1452_2068)" />
+		                            <rect opacity="0.45" x="1043" width="75" height="668.121" fill="url(#paint11_linear_1452_2068)" />
+		                            <rect opacity="0.45" x="1147" width="75" height="832" fill="url(#paint12_linear_1452_2068)" />
+		                            <rect opacity="0.3" x="1242" width="76" height="822.195" fill="url(#paint13_linear_1452_2068)" />
+		                            <rect opacity="0.15" x="1338" width="75" height="799.784" fill="url(#paint14_linear_1452_2068)" />
+		                            <rect opacity="0.125" x="1433" width="75" height="668.121" fill="url(#paint15_linear_1452_2068)" />
+		                        </g>
+		                        <defs>
+		                            <linearGradient id="paint0_linear_1452_2068" x1="37.5" y1="0" x2="37.5" y2="832" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint1_linear_1452_2068" x1="133" y1="0" x2="133" y2="822.195" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint2_linear_1452_2068" x1="228.5" y1="0" x2="228.5" y2="799.784" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint3_linear_1452_2068" x1="323.5" y1="0" x2="323.5" y2="668.121" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint4_linear_1452_2068" x1="427.5" y1="0" x2="427.5" y2="832" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint5_linear_1452_2068" x1="523" y1="0" x2="523" y2="822.195" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint6_linear_1452_2068" x1="618.5" y1="0" x2="618.5" y2="799.784" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint7_linear_1452_2068" x1="713.5" y1="0" x2="713.5" y2="668.121" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint8_linear_1452_2068" x1="794.5" y1="0" x2="794.5" y2="832" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint9_linear_1452_2068" x1="890" y1="0" x2="890" y2="822.195" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint10_linear_1452_2068" x1="985.5" y1="0" x2="985.5" y2="799.784" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint11_linear_1452_2068" x1="1080.5" y1="0" x2="1080.5" y2="668.121" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint12_linear_1452_2068" x1="1184.5" y1="0" x2="1184.5" y2="832" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint13_linear_1452_2068" x1="1280" y1="0" x2="1280" y2="822.195" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint14_linear_1452_2068" x1="1375.5" y1="0" x2="1375.5" y2="799.784" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                            <linearGradient id="paint15_linear_1452_2068" x1="1470.5" y1="0" x2="1470.5" y2="668.121" gradientUnits="userSpaceOnUse">
+		                                <stop stop-color="white" stop-opacity="0" />
+		                                <stop offset="0.541667" stop-color="#3C3C3C" />
+		                                <stop offset="1" stop-color="white" stop-opacity="0" />
+		                            </linearGradient>
+		                        </defs>
+		                    </svg>
+		                    <div class="flex flex-col px-5 items-center justify-center gap-5 text-center">
+		                        <div class="overflow-hidden">
+		                            <div class="" style="opacity: 1; transform: none;">
+		                                <?php echo get_sub_field("acf_flx_hp_wcs_section_image"); ?>
+		                            </div>
+		                        </div>
+		                        <h2 class="flex flex-wrap items-center text-center justify-center gap-2 text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold font-criteria text-grayDark dark:text-white max-w-5xl" style="opacity: 1;">
+		                            <?php echo get_sub_field("acf_flx_hp_wcs_section_title"); ?>
+		                        </h2>
+		                        <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+		                            <?php echo get_sub_field("acf_flx_hp_wcs_section_content"); ?>
+		                        </p>
+		                        <p class="text-lg leading-normal max-w-3xl font-bold opacity-50 text-black dark:text-white/50">
+		                            <?php echo get_sub_field("acf_flx_hp_wcs_section_sub_title"); ?>
+		                        </p>
+		                    </div>
+		                    <div class="grid xl:grid-cols-4 px-5 xl:px-[100px] gap-[30px] mt-[38px]">
+		                    	<?php
+								  if( have_rows('acf_flx_hp_wcs_section_listing') ):
+								    while( have_rows('acf_flx_hp_wcs_section_listing') ) : the_row();
+								    	?>
+								    		<div class="flex flex-col rounded-[20px] py-10 px-[30px] gap-4 border border-[#C6C6C6] dark:border-[#5a5a5a]">
+									            <div>
+									               <p class="text-[44px] max-w-3xl pb-[30px] font-extrabold text-grayDark dark:text-primary leading-[1.22] border-b border-[#C6C6C6] dark:border-[#5a5a5a]">
+									                  <?php echo get_sub_field("acf_flx_hp_wcs_listing_title"); ?>
+									               </p>
+									               <p class="pt-[30px] text-grayDark text-xl font-criteria font-extrabold leading-[1.5] dark:text-primary">
+									                  <?php echo get_sub_field("acf_flx_hp_wcs_listing_sub_title"); ?>
+									               </p>
+									            </div>
+									            <p class="text-grayDark dark:text-white leading-[1.8]">
+									               <?php echo get_sub_field("acf_flx_hp_wcs_listing_content"); ?>
+									            </p>
+									         </div>
+								    	<?php
+								    endwhile;
+								  endif;
+								?>
+		                        <div class="flex flex-col rounded-[20px] py-10 px-[30px] gap-2 bg-grayDark dark:bg-white">
+		                            <?php echo get_sub_field("acf_flx_hp_wcs_4th_listing_image"); ?>
+
+		                            <p class="text-lg text-primary dark:text-grayDark font-criteria font-extrabold leading-[1.5]">
+		                                <?php echo get_sub_field("acf_flx_hp_wcs_4th_listing_list_title"); ?>
+		                            </p>
+		                            <p class="text-white dark:text-grayDark leading-[1.8] mb-3">
+		                                <?php echo get_sub_field("acf_flx_hp_wcs_4th_listing_sub_title"); ?>
+		                            </p>
+		                            <a href="<?php echo get_sub_field("acf_flx_hp_wcs_4th_listing_button_url"); ?>">
+			                            <button
+			                                class="relative capitalize mt-auto px-6 py-3 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg group text-sm leading-[24px] sm:text-base sm:leading-[26px] font-bold text-black bg-primary transition-all duration-300 w-full sm:w-auto"
+			                            >
+			                                <span><?php echo get_sub_field("acf_flx_hp_wcs_4th_listing_button_title"); ?></span>
+			                                <span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+			                            </button>
+			                        </a>
+		                        </div>
+		                    </div>
+		                    <div class="flex flex-col items-center justify-center mt-[100px] gap-8 text-center px-2 md:px-[60px]">
+		                        <h2 class="text-2xl md:text-4xl font-criteria text-grayDark dark:text-white leading-tight font-semibold max-w-2xl"><?php echo get_sub_field("acf_flx_hp_wcs_experience_section_title"); ?></h2>
+		                        <div class="dark:border bg-[#ffffff] shadow-lg dark:shadow-none border-none dark:bg-[#2C2C2C] border-grayDark gap-2 md:gap-5 p-2 md:p-5 grid xl:grid-cols-3 rounded">
+		                        	<?php
+									  if( have_rows('acf_flx_hp_wcs_experience_section_listing') ):
+									    while( have_rows('acf_flx_hp_wcs_experience_section_listing') ) : the_row();
+									    	?>
+									    		<div class="flex flex-col p-4 dark:border border-none border-grayDark rounded items-center bg-[#fbfbfb] dark:bg-[#090606] gap-4 justify-center text-center">
+									               <h4 class="text-6xl text-grayDark dark:text-primary font-bold font-criteria"><?php echo get_sub_field("acf_flx_hp_wcs_listing_value"); ?><span class="font-sans font-bold">+</span></h4>
+									               <p class="text-lg leading-normal max-w-3xl font-bold text-grayDark dark:text-white font-criteria">
+									                  <?php echo get_sub_field("acf_flx_hp_wcs_listing_title"); ?>
+									               </p>
+									               <p class="text-base leading-[1.87] font- max-w-3xl text-content dark:text-white font-light">
+									                  <?php echo get_sub_field("acf_flx_hp_wcs_listing_content"); ?>
+									               </p>
+									            </div>
+									    	<?php
+									    endwhile;
+									  endif;
+									?>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_ops_our_process_section' ): 
+	        	?>
+	        		<!-- Process Section -->
+		            <div class="px-5 process--scroll">
+		                <div class="flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8 text-center">
+		                    <h2 class="text-lg font-criteria text-grayDark dark:text-white sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+		                        <?php echo get_sub_field("acf_flx_hp_ops_section_title"); ?>
+		                    </h2>
+		                    <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+		                        <?php echo get_sub_field("acf_flx_hp_ops_section_content"); ?>
+		                    </p>
+		                </div>
+		                <div class="overflow-hidden hidden xl:flex pt-[60px]">
+		                    <h3 class="text-[6.4vw] text-[#343434] dark:text-white font-bold flex flex-col items-center leading-[2.1] justify-center w-full capitalize whitespace-nowrap">
+		                        <span class="inline-block span1"><?php echo get_sub_field("acf_flx_hp_ops_process_listing_title_1"); ?></span>
+		                        <span class="inline-block span2">
+		                            <span
+		                                style="
+		                                    background: linear-gradient(137deg, #ffdd00, #8f00ff, #ffdd00, #8f00ff, #ffdd00, #8f00ff);
+		                                    background-size: 400% 100%;
+		                                    animation: moveGradient 16s linear infinite;
+		                                    -webkit-background-clip: text;
+		                                    background-clip: text;
+		                                    -webkit-text-fill-color: transparent;
+		                                "
+		                            >
+		                                <?php echo get_sub_field("acf_flx_hp_ops_process_listing_title_2"); ?>
+		                            </span>
+		                        </span>
+		                        <span class="inline-block span3"><?php echo get_sub_field("acf_flx_hp_ops_process_listing_title_3"); ?></span>
+		                    </h3>
+		                </div>
+		                <div class="overflow-hidden flex xl:hidden pt-[60px]">
+		                    <h3 class="text-[6.4vw] text-[#343434] dark:text-white font-bold flex flex-col items-center leading-[2.1] justify-center w-full capitalize whitespace-nowrap">
+		                        <span class="inline-block"><?php echo get_sub_field("acf_flx_hp_ops_process_listing_title_1"); ?></span>
+		                        <span class="inline-block">
+		                            <span
+		                                style="
+		                                    background: linear-gradient(137deg, #ffdd00, #8f00ff, #ffdd00, #8f00ff, #ffdd00, #8f00ff);
+		                                    background-size: 400% 100%;
+		                                    animation: moveGradient 16s linear infinite;
+		                                    -webkit-background-clip: text;
+		                                    background-clip: text;
+		                                    -webkit-text-fill-color: transparent;
+		                                "
+		                            >
+		                                <?php echo get_sub_field("acf_flx_hp_ops_process_listing_title_2"); ?>
+		                            </span>
+		                        </span>
+		                        <span class="inline-block"><?php echo get_sub_field("acf_flx_hp_ops_process_listing_title_3"); ?></span>
+		                    </h3>
+		                </div>
+		            </div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_cbs_creative_blog_section' ): 
+	        	?>
+	        		<div class="max-w-screen-2xl mx-auto px-4 w-full">
+		                <div class="w-[885px] max-w-full mx-auto text-center md:pb-[60px] pb-10 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8">
+		                    <h2 class="dark:text-white text-grayDark lg:pb-0 pb-4 text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+		                        <?php echo get_field("acf_opt_fbs_bs_section_title", "option"); ?>
+		                    </h2>
+		                    <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+		                        <?php echo get_field("acf_opt_fbs_bs_section_sub_title", "option"); ?>
+		                    </p>
+		                </div>
+		                <div class="flex flex-wrap -mx-5">
+		                	<?php
+		                		if( get_field("acf_opt_fbs_bs_select_blogs", 'option') )
+		                		{
+		                			foreach( get_field("acf_opt_fbs_bs_select_blogs", 'option') as $blog_listing )
+		                			{
+		                				$post_image = get_stylesheet_directory_uri()."/assets/images/blog-1.png";
+                                        if( has_post_thumbnail($blog_listing->ID) )
+                                        {
+                                            $post_image = get_the_post_thumbnail_url( $blog_listing->ID, 'large' );
+                                        }
+                                        $category_detail = get_the_category($blog_listing->ID);
+			                			?>
+			                				<div class="md:w-1/3 w-full md:pb-0 pb-4 px-5 max-w-full">
+						                        <div class="bg-white dark:bg-[#282525] lg:hover:-translate-y-4 h-full shadow-cardShadow group rounded-[20px] border border-transparent hover:bg-transparent hover:border-primary transition-all duration-500">
+						                            <div class="object-cover object-center overflow-hidden rounded-tl-[20px] rounded-tr-[20px]">
+						                                <img class="object-cover group-hover:scale-105 transition-all duration-500 object-center w-full" src="<?php echo $post_image; ?>" alt="blog" />
+						                            </div>
+						                            <div class="lg:p-[28px] p-5">
+						                                <div class="flex justify-between items-center pb-6">
+						                                    <p class="md:text-base text-xs font-semibold md:leading-7 leading-[1.71] text-grayDark dark:text-primary capitalize">
+						                                        <?php echo $category_detail[0]->cat_name; ?>
+						                                    </p>
+						                                    <p class="md:text-base text-xs font-semibold md:leading-7 leading-[1.71] text-grayDark dark:text-primary capitalize">
+						                                        <?php echo get_the_date("d M"); ?>
+						                                    </p>
+						                                </div>
+						                                <p class="lg:text-xl text-sm font-semibold lg:leading-[1.9] leading-6 text-content dark:text-white">
+						                                    <?php echo get_the_title($blog_listing->ID); ?>
+						                                </p>
+						                            </div>
+						                        </div>
+						                    </div>
+			                			<?php
+			                		}
+		                		}
+		                	?> 
+		                </div>
+		                <div class="text-center md:pt-10 pt-5">
+		                	<a href="<?php echo site_url( 'blog' ); ?>">
+			                    <button class="relative capitalize leading-[1.6] overflow-hidden px-6 py-4 z-10 hover:shadow-gradientShadow hover:scale-105 rounded-lg group font-bold text-base text-black bg-primary transition-all duration-300">
+			                        <span>Check Our Latest Blogs</span>
+			                        <span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+			                    </button>
+			                </a>
+		                </div>
+		            </div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_ts_testimonial_section' ): 
+	        	?>
+	        		<div class="max-w-screen-2xl mx-auto px-4 w-full">
+		                <div class="w-[885px] max-w-full mx-auto text-center md:pb-[60px] pb-10 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8">
+		                    <h2 class="dark:text-white text-grayDark lg:pb-0 pb-4 text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+		                        <?php echo get_sub_field("acf_flx_hp_ts_section_title"); ?>
+		                    </h2>
+		                    <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+		                        <?php echo get_sub_field("acf_flx_hp_ts_section_content"); ?>
+		                    </p>
+		                </div>
+		                <div class="swiper testimonial-slider sm:!px-0 !px-[15px] md:[mask:linear-gradient(90deg,transparent,white_20%,white_80%,transparent)]">
+		                    <div class="swiper-wrapper md:pb-[60px] pb-5">
+		                    	<?php
+								  if( have_rows('acf_flx_hp_ts_section_listing') ):
+								    while( have_rows('acf_flx_hp_ts_section_listing') ) : the_row();
+								    	?>
+								    		<div class="swiper-slide sm:!w-[470px] !w-full max-w-full py-[30px]">
+									            <div
+									               class="sm:w-[470px] w-full max-w-full shadow-sliderCard rounded-[40px] bg-white dark:bg-[#232020] py-8 px-7 transition-all duration-500 border border-solid border-transparent hover:border-primary translate-y-0 hover:-translate-y-6"
+									               >
+									               <div class="flex justify-between items-center pb-6">
+									                  <div class="flex items-center">
+									                     <em class="md:w-10 md:h-10 md:min-w-10 md:min-h-10 w-[30px] h-[30px] min-w-[30px] min-h-[30px] rounded-full md:mr-3 mr-2">
+									                     <img
+									                        src="<?php echo get_sub_field("acf_flx_hp_ts_listing_image"); ?>"
+									                        alt="client"
+									                        class="md:w-10 md:h-10 w-[30px] h-[30px] object-cover object-center rounded-full shadow-clientImage"
+									                        />
+									                     </em>
+									                     <h6 class="capitalize md:text-lg text-xs md:leading-[1.61] leading-5 font-semibold text-grayDark dark:text-primary">
+									                        <?php echo get_sub_field("acf_flx_hp_ts_listing_title"); ?>
+									                     </h6>
+									                  </div>
+									                  <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/ic-rating.svg" alt="rating" /></a>
+									               </div>
+									               <div>
+									                  <p class="md:pb-7 pb-3 md:text-base text-xs font-medium md:leading-7 leading-[1.83] text-content dark:text-white tracking-[0.045px]">
+									                     <?php echo get_sub_field("acf_flx_hp_ts_listing_sub_title"); ?>
+									                  </p>
+									                  <p class="md:text-base text-xs font-medium md:leading-7 leading-[1.83] text-content dark:text-white tracking-[0.045px]">
+									                     <?php echo get_sub_field("acf_flx_hp_ts_listing_content"); ?>
+									                  </p>
+									               </div>
+									            </div>
+									         </div>
+								    	<?php
+								    endwhile;
+								  endif;
+								?>			                        
+		                    </div>
+		                    <div class="flex justify-center items-center">
+		                        <button
+		                            class="hidden prev-btn md:inline-flex items-center justify-center rounded-full -left-12 top-1/2 relative transition-all duration-500 bg-primary dark:text-grayDark w-12 h-12 translate-y-0 translate-x-full dark:hover:bg-white hover:bg-grayDark hover:text-white dark:hover:text-black"
+		                            disabled=""
+		                        >
+		                            <svg
+		                                xmlns="http://www.w3.org/2000/svg"
+		                                width="24"
+		                                height="24"
+		                                viewBox="0 0 24 24"
+		                                fill="none"
+		                                stroke="currentColor"
+		                                stroke-width="2"
+		                                stroke-linecap="round"
+		                                stroke-linejoin="round"
+		                                class="lucide lucide-chevron-left h-6 w-6"
+		                            >
+		                                <path d="m15 18-6-6 6-6"></path>
+		                            </svg>
+		                            <span class="sr-only">Previous slide</span>
+		                        </button>
+		                        <button
+		                            class="hidden next-btn ml-6 md:inline-flex items-center justify-center disabled:pointer-events-none disabled:opacity-50 rounded-full -left-12 top-1/2 relative transition-all duration-500 bg-primary dark:text-grayDark w-12 h-12 translate-y-0 translate-x-full dark:hover:bg-white hover:bg-grayDark hover:text-white dark:hover:text-black"
+		                        >
+		                            <svg
+		                                xmlns="http://www.w3.org/2000/svg"
+		                                width="24"
+		                                height="24"
+		                                viewBox="0 0 24 24"
+		                                fill="none"
+		                                stroke="currentColor"
+		                                stroke-width="2"
+		                                stroke-linecap="round"
+		                                stroke-linejoin="round"
+		                                class="lucide lucide-chevron-right h-6 w-6"
+		                            >
+		                                <path d="m9 18 6-6-6-6"></path>
+		                            </svg>
+		                            <span class="sr-only">Next slide</span>
+		                        </button>
+		                        <div class="swiper-pagination slider-pagination md:hidden block"></div>
+		                    </div>
+		                </div>
+		            </div>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_fs_form_section' ): 
+	        	?>
+	        		<form id="frmcontactform" method="post">
+		        		<div class="flex flex-col">
+			                <div class="py-32 px-4 relative flex items-center justify-center text-white xl:h-screen">
+			                    <img class="absolute top-0 left-0 w-full h-full object-cover -z-10 dark:block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/black-bg.png" />
+			                    <img class="absolute top-0 left-0 w-full h-full object-cover -z-10 dark:hidden" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/light-bg.png" />
+			                    <div class="absolute top-0 left-0 w-full h-full object-cover hidden dark:block" style="background: radial-gradient(50% 50% at 50% 0.5%, #303030 0%, #00000080 100%);"></div>
+			                    <div class="absolute top-0 left-0 w-full h-full object-cover -z-20 bg-white dark:bg-black"></div>
+			                    <div
+			                        class="w-full flex flex-col gap-[60px] xl:flex-row justify-between relative z-10 max-w-screen-2xl px-5 py-4 lg:p-[60px] xl:h-[669px] mx-auto rounded-xl backdrop-blur-[6.5px] border-[1.5px] dark:border-[#333333] bg-white dark:bg-[#000c] shadow-[0px_20px_28px_0px_#0000000d] dark:bg-[radial-gradient(50%_50%_at_50%_0.5%,transparent,#000000cc_100%)]"
+			                    >
+			                        <div class="flex flex-col flex-1 items-start gap-6">
+			                            <h2 class="flex flex-wrap font-criteria gap-2 text-[40px] font-semibold leading-[1.6] max-w-2xl text-black dark:text-white text-left items-start justify-start">
+			                                <?php echo get_field("acf_opt_fbs_cfs_section_title", "option"); ?>
+			                            </h2>
+			                            <p class="text-lg text-black/80 font-light dark:text-white leading-[1.6] max-w-2xl text-left items-start justify-start">
+			                                <?php echo get_field("acf_opt_fbs_cfs_section_sub_title", "option"); ?>
+			                            </p>
+			                            <div class="flex flex-col sm:grid grid-cols-2 w-full gap-10 sm:gap-12 mt-[32px]">
+			                                <div class="input-group relative w-full">
+			                                    <input
+			                                        type="text"
+			                                        placeholder=""
+			                                        class="p-0 pb-2 text-lg w-full border-b text-black dark:text-white dark:focus:border-primary outline-0 border-[#E3E3E3] dark:border-white bg-transparent leading-6 transition-all duration-500"
+			                                        name="txtfullname"
+			                                        required
+			                                        id="txtfullname"
+			                                    />
+			                                    <label class="dark:text-white text-black pb-2 p-0 text-lg absolute top-0 flex left-0 leading-6 transition-all duration-500 pointer-events-none">
+			                                        <span style="transition-delay: 0s;" class="block">F</span><span style="transition-delay: 0.03s;" class="block">u</span><span style="transition-delay: 0.06s;" class="block">l</span>
+			                                        <span style="transition-delay: 0.09s;" class="block">l</span><span class="block">&nbsp;</span><span style="transition-delay: 0.12s;" class="block">N</span>
+			                                        <span style="transition-delay: 0.15s;" class="block">a</span><span style="transition-delay: 0.18s;" class="block">m</span><span style="transition-delay: 0.21s;" class="block">e</span>
+			                                        <span class="block">&nbsp;</span>
+			                                    </label>
+			                                </div>
+			                                <div class="input-group relative w-full">
+			                                    <input
+			                                        type="email"
+			                                        placeholder=""
+			                                        class="p-0 pb-2 text-lg w-full border-b text-black dark:text-white dark:focus:border-primary outline-0 border-[#E3E3E3] dark:border-white bg-transparent leading-6 transition-all duration-500"
+			                                        required
+			                                        data-dashlane-rid="7871695ceadaa159"
+			                                        data-dashlane-classification="other"
+			                                        name="txtemail"
+			                                        id="txtemail"
+			                                    />
+			                                    <label class="dark:text-white text-black pb-2 text-lg p-0 absolute top-0 flex left-0 leading-6 transition-all duration-500 pointer-events-none">
+			                                        <span style="transition-delay: 0s;" class="block">E</span><span style="transition-delay: 0.03s;" class="block">m</span><span style="transition-delay: 0.06s;" class="block">a</span>
+			                                        <span style="transition-delay: 0.09s;" class="block">i</span><span style="transition-delay: 0.12s;" class="block">l</span><span class="block">&nbsp;</span>
+			                                    </label>
+			                                </div>
+			                                <div class="col-span-2 sm:mt-3">
+			                                    <div class="input-group relative w-full">
+			                                        <input
+			                                            type="text"
+			                                            placeholder=""
+			                                            class="p-0 pb-2 text-lg w-full border-b text-black dark:text-white dark:focus:border-primary outline-0 border-[#E3E3E3] dark:border-white bg-transparent leading-6 transition-all duration-500"
+			                                            required
+			                                            name="txtaboutproject"
+			                                            id="txtaboutproject"
+			                                        />
+			                                        <label class="dark:text-white text-black pb-2 text-lg p-0 absolute top-0 flex left-0 leading-6 transition-all duration-500 pointer-events-none">
+			                                            <span style="transition-delay: 0s;" class="block">A</span><span style="transition-delay: 0.03s;" class="block">b</span><span style="transition-delay: 0.06s;" class="block">o</span>
+			                                            <span style="transition-delay: 0.09s;" class="block">u</span><span style="transition-delay: 0.12s;" class="block">t</span><span class="block">&nbsp;</span>
+			                                            <span style="transition-delay: 0.21s;" class="block">P</span><span style="transition-delay: 0.24s;" class="block">r</span><span style="transition-delay: 0.27s;" class="block">o</span>
+			                                            <span style="transition-delay: 0.3s;" class="block">j</span><span style="transition-delay: 0.32999999999999996s;" class="block">e</span>
+			                                            <span style="transition-delay: 0.36s;" class="block">c</span><span style="transition-delay: 0.39s;" class="block">t</span><span class="block">&nbsp;</span>
+			                                        </label>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                            <div class="g-recaptcha" data-sitekey="6LdTi10qAAAAACZH2COJySpOxo5SKzYF8K5emSqN"></div>
+			                            <div class="flex flex-col md:flex-row gap-8 justify-between items-start w-full mt-auto">
+			                                <div class="sm:text-lg text-black dark:text-white sm:leading-9 max-w-96">
+			                                    <span>By sending this form I confirm that I have read and accept the</span>
+
+			                                    <a class="text-base relative inline-flex font-bold text-[#72B5E0] dark:text-primary group transition-all duration-500" href="<?php echo site_url( 'privacy-policy' ); ?>">
+			                                        <div class="relative overflow-hidden">
+			                                            <span class="group-hover:translate-y-full w-full h-full group-hover:rotate-[0deg] origin-bottom-left transition-all grid place-content-center duration-500 pointer-events-none">
+			                                                Privacy Policy
+			                                            </span>
+			                                            <span
+			                                                class="absolute bottom-full left-0 -rotate-[0deg] group-hover:rotate-0 origin-bottom-left w-full h-full grid place-content-center group-hover:translate-y-full transition-all duration-500 pointer-events-none"
+			                                            >
+			                                                Privacy Policy
+			                                            </span>
+			                                        </div>
+			                                        <span class="absolute -bottom-0.5 left-0 w-full h-[1px] origin-right group-hover:origin-left scale-x-0 bg-[#72B5E0] dark:bg-primary transition-transform duration-500 group-hover:scale-x-100"></span>
+			                                    </a>
+			                                </div>
+			                                <button type="submit" 
+			                                    class="relative capitalize text-base px-6 py-3 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg group font-bold text-black bg-primary transition-all duration-300 w-full sm:w-auto" id="btnsubmit" 
+			                                >
+			                                    <span class="btnsubmitspan">Send a message</span>
+			                                    <span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+			                                </button>
+			                                <input type="hidden" name="action" value="act_store_contact_form_data">			                                
+			                            </div>
+			                            <div>
+			                            	<h4 id="successmessage" class="messagenot"></h4>
+			                                <h4 id="errormessage" class="messagenot"></h4>
+			                            </div>
+			                        </div>
+			                        <div
+			                            class="xl:w-[524px] gap-10 h-full border dark:border-grayDark border-transparent flex flex-col justify-between rounded-lg p-4 md:p-10 bg-primary dark:bg-[radial-gradient(50%_50%_at_50%_0.5%,#171717_0%,#000000_100%)]"
+			                        >
+			                            <div class="flex flex-col gap-4">
+			                                <h3 class="text-2xl md:text-[40px] font-bold dark:font-light md:leading-[1.25] uppercase text-black dark:text-white">
+			                                    <?php echo get_field("acf_opt_fbs_cfs_client_say_title", "option"); ?>
+			                                </h3>
+			                                <div class="w-full h-[1px] bg-black/50 dark:bg-[#A8A7A7]"></div>
+			                                <p class="sm:text-xl font-medium dark:font-normal sm:leading-[1.8] text-[#010101] dark:text-white">
+			                                    <?php echo get_field("acf_opt_fbs_cfs_client_say_detail", "option"); ?>
+			                                </p>
+			                            </div>
+			                            <div class="flex gap-4 items-center">
+			                                <div class="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-full bg-black/10 dark:bg-white/10"></div>
+			                                <div class="flex flex-col gap-1">
+			                                    <p class="sm:text-[26px] font-extrabold leading-[1.26] capitalize text-grayDark dark:text-white"><?php echo get_field("acf_opt_fbs_cfs_client_name", "option"); ?></p>
+			                                    <p class="text-black dark:text-white/50 text-lg leading-[1.83] capitalize">
+			                                        <?php echo get_field("acf_opt_fbs_cfs_client_designation", "option"); ?>
+			                                    </p>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			        </form>
+	        	<?php
+	        elseif( get_row_layout() == 'acf_flx_hp_fs_faq_section' ): 
+	        	?>
+	        		<div class="flex flex-col max-w-screen-xl px-5 w-full mx-auto gap-16">
+		                <div class="flex flex-col items-center justify-center h-full gap-4 sm:gap-6 md:gap-8 text-center">
+		                    <h2 class="flex flex-wrap items-center text-center justify-center gap-2 text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold max-w-5xl dark:text-white" style="opacity: 1;">
+		                        <?php echo get_sub_field("acf_flx_hp_fs_section_title"); ?>
+		                    </h2>
+		                    <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+		                        <?php echo get_sub_field("acf_flx_hp_fs_section_sub_title"); ?>
+		                    </p>
+		                </div>
+		                <div class="flex flex-col gap-[60px]">
+		                    <div>
+		                        <div class="w-full">
+		                        	<?php
+									    if( have_rows('acf_flx_hp_fs_section_listing') ):
+									        while( have_rows('acf_flx_hp_fs_section_listing') ) : the_row();
+									            ?>
+									            	<div class="rounded-[4px] mb-5 bg-white dark:bg-[#282525] shadow-cardShadow">
+						                                <button type="button" class="accordion-button w-full flex items-center justify-between font-semibold text-grayDark dark:text-white text-sm md:text-xl md:leading-[1.5] leading-[1.7] md:p-6 p-5">
+						                                    <?php echo get_sub_field("acf_flx_hp_fs_listing_title"); ?>
+						                                    <em class="accordion-icon inline-block leading-[0] min-w-6">
+						                                        <svg
+						                                            xmlns="http://www.w3.org/2000/svg"
+						                                            width="24"
+						                                            height="24"
+						                                            viewBox="0 0 24 24"
+						                                            fill="none"
+						                                            stroke="currentColor"
+						                                            stroke-width="2"
+						                                            stroke-linecap="round"
+						                                            stroke-linejoin="round"
+						                                            class="default-icon dark:text-primary"
+						                                        >
+						                                            <path d="M5 12h14"></path>
+						                                            <path d="M12 5v14"></path>
+						                                        </svg>
+						                                        <svg
+						                                            xmlns="http://www.w3.org/2000/svg"
+						                                            width="24"
+						                                            height="24"
+						                                            viewBox="0 0 24 24"
+						                                            fill="none"
+						                                            stroke="currentColor"
+						                                            stroke-width="2"
+						                                            stroke-linecap="round"
+						                                            stroke-linejoin="round"
+						                                            class="show-icon hidden dark:text-primary"
+						                                        >
+						                                            <path d="M5 12h14"></path>
+						                                        </svg>
+						                                    </em>
+						                                </button>
+						                                <div class="accordion-content overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+						                                    <div class="md:p-6 p-4">
+						                                        <p class="text-lg leading-[1.8] opacity-80 font-normal text-[#5A5A5A] dark:text-[#ddd]">
+						                                            <?php echo get_sub_field("acf_flx_hp_fs_listing_detail"); ?>
+						                                        </p>
+						                                    </div>
+						                                </div>
+						                            </div>
+									            <?php
+									        endwhile;
+									    endif;
+									?>
+
+		                        </div>
+		                    </div>
+		                    <div
+		                        class="w-full h-[150px] px-4 hover:scale-105 hover:rotate-2 transition-all duration-500 hover:shadow-2xl rounded-lg overflow-hidden flex items-center justify-center text-white"
+		                        style="background: linear-gradient(137deg, #ffdd00, #8f00ff, #ffdd00, #8f00ff); background-size: 400% 100%; animation: moveGradient 40s linear infinite;"
+		                    >
+		                        <h2 class="text-2xl lg:text-[32px] font-bold text-center">
+		                            <?php echo get_sub_field("acf_flx_hp_fs_section_footer_content"); ?>
+		                        </h2>
+		                    </div>
+		                </div>
+		            </div>
+	        	<?php
+	        endif;
+	    endwhile;
+	endif;
+get_footer();
+?>

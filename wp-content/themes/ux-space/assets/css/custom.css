@@ -1,0 +1,7 @@
+.parsley-errors-list>li
+{
+    color: red;
+    font-weight: normal;
+    font-size: 17px;
+    margin-top: 5px;
+}

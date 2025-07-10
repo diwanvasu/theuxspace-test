@@ -1,0 +1,1028 @@
+<?php
+/*
+	Template Name: Product Innovation Page Template
+*/
+get_header();
+$currentId = get_the_ID();
+
+$serviceBannerImage = get_stylesheet_directory_uri()."/assets/images/bg/inner-bg-4.jpg";
+
+if( has_post_thumbnail() )
+{
+  $serviceBannerImage = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+}
+    if( have_rows('acf_flx_pi_page_content') ):
+        while ( have_rows('acf_flx_pi_page_content') ) : the_row();
+            if( get_row_layout() == 'acf_flx_pi_hs_hero_section' ):
+                ?>
+                    <!-- Hero Homepage -->
+                        <div class="relative">
+                            <div class="max-w-screen-2xl px-5 mx-auto pt-[120px]">
+                                <div class="flex flex-col items-center justify-center text-center max-w-[1381px] w-full mx-auto">
+                                    <div class="bg-[#383838] mb-[46px] h-[50px] px-5 gap-4 w-max rounded-3xl flex items-center">
+                                        <?php echo get_sub_field("acf_flx_pi_hs_section_image"); ?>
+                                    </div>
+                                    <h1
+                                        class="font-criteria text-[18px] sm:text-[24px] md:text-[38px] lg:text-[55px] xl:text-[64px] leading-[28px] sm:leading-[35px] md:leading-[50px] lg:leading-[70px] xl:leading-[89px] font-semibold text-grayDark dark:text-white mb-6 md:mb-[42px]"
+                                    >
+                                        <?php echo get_sub_field("acf_flx_pi_hs_section_title"); ?>
+                                    </h1>
+                                    <div class="flex flex-col md:max-w-[880px] text-base md:text-xl xl:text-[28px] mb-[30px]">
+                                        <p class="font-sans text-sm leading-[24px] sm:text-[20px] sm:leading-[35px] md:text-[28px] md:leading-[45px] text-content dark:text-white">
+                                            <?php echo get_sub_field("acf_flx_pi_hs_section_sub_title"); ?>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <a href="<?php echo get_sub_field("acf_flx_pi_hs_button_url"); ?>">
+                                            <button
+                                                class="relative capitalize px-6 py-4 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg group font-bold text-sm leading-[24px] sm:text-base sm:leading-[26px] text-black bg-primary transition-all duration-300"
+                                            >
+                                                <span><?php echo get_sub_field("acf_flx_pi_hs_button_title"); ?></span>
+                                                <span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_pi_cwws_client_we_work_with_section' ): 
+                ?>
+                    <div class="max-w-screen-2xl px-5 mx-auto [mask:linear-gradient(90deg,transparent,white_20%,white_80%,transparent)] w-full">
+                        <h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-criteria font-semibold dark:text-white text-grayDark pb-6 !leading-[1] sm:pb-10 md:pb-[60px] text-center">
+                          <?php echo get_sub_field("acf_flx_pi_cwws_section_title"); ?>
+                       </h2>
+                       <div class="w-max flex flex-row gap-24 brand-animation">
+                            <?php
+                              if( have_rows('acf_flx_pi_cwws_section_listing') ):
+                                while( have_rows('acf_flx_pi_cwws_section_listing') ) : the_row();
+                                    echo get_sub_field("acf_flx_uxc_cwws_listing_image"); 
+                                endwhile;
+                              endif;
+                            ?>
+                       </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_pi_cs_checkbox_section' ): 
+                ?>
+                    <!-- Checkboxes -->
+                    <div class="max-w-screen-2xl mx-auto px-4">
+                        <div class="flex flex-col gap-4 md:gap-5 items-center justify-center text-center">
+                            <h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-criteria font-semibold dark:text-white text-grayDark leading-none text-center">
+                                <?php echo get_sub_field("acf_flx_pi_cs_section_title"); ?>
+                            </h2>
+                            <p class="md:text-xl xl:text-2xl xl:leading-10 max-w-5xl text-grayDark dark:text-white">
+                                <?php echo get_sub_field("acf_flx_pi_cs_section_content"); ?>
+                            </p>
+                            <div class="mt-4 md:mt-[60px] gap-4 md:gap-[33px] grid xl:grid-cols-2">
+                                <?php
+                                    if( have_rows('acf_flx_pi_cs_section_listing') ):
+                                        while( have_rows('acf_flx_pi_cs_section_listing') ) : the_row();
+                                            ?>
+                                                <label
+                                                    for="checkbox2"
+                                                    class="py-[27px] px-5 md:p-[30px] cursor-pointer text-left flex gap-[15px] md:gap-[30px] items-start md:items-center rounded bg-white dark:bg-[#232020]"
+                                                    style="box-shadow: rgba(0, 0, 0, 0.05) 0px 15.984px 22.378px 0px;"
+                                                >
+                                                    <div class="inline-flex items-center">
+                                                        <div class="flex mt-2 md:mt-0 items-center cursor-pointer relative">
+                                                            <input
+                                                                type="checkbox"
+                                                                checked
+                                                                id="checkbox2"
+                                                                class="peer h-5 w-5 md:h-[51px] md:w-[51px] cursor-pointer transition-all duration-500 appearance-none rounded md:rounded-xl checked:shadow-[0px_10.016px_16.026px_0px_rgba(0,0,0,0.15)] hover:shadow-[0px_10.016px_16.026px_0px_rgba(0,0,0,0.15)] border-2 md:border-4 !border-[#565656]/50 checked:bg-primary checked:!border-primary"
+                                                            />
+                                                            <span class="absolute text-white transition-all duration-500 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                                                                <svg width="26" height="19" class="scale-50 md:scale-100 w-[26px] h-[19px]" viewBox="0 0 26 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M8.67452 18.9329C8.1608 18.9329 7.64911 18.738 7.25316 18.3522L1.45199 12.6668C0.651964 11.883 0.639781 10.5977 1.42356 9.79561C2.20937 8.99356 3.49671 8.9834 4.29471 9.76515L8.67452 14.0597L21.7551 1.23903C22.5571 0.45525 23.8425 0.463372 24.6262 1.26746C25.412 2.06748 25.3999 3.35482 24.5998 4.1386L10.0959 18.3522C9.69993 18.738 9.18824 18.9329 8.67452 18.9329Z"
+                                                                        fill="#333333"
+                                                                    />
+                                                                </svg>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-sm md:text-[22px] font-medium leading-[24px] md:leading-[44px] opacity-60">
+                                                        <?php echo get_sub_field("acf_flx_pi_cs_listing_title"); ?>
+                                                    </p>
+                                                </label>
+                                            <?php
+                                        endwhile;
+                                    endif;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_pi_ctass_cta_single_section' ): 
+                ?>
+                    <!-- Yellow CTA -->
+                    <div class="px-5">
+                        <div class="max-w-screen-2xl mx-auto relative p-5 md:p-10 rounded-md md:rounded w-full bg-primary">
+                            <div class="absolute top-0 left-0 w-full h-full">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/curl-img.png" class="w-full h-full object-cover" alt="" />
+                            </div>
+                            <div class="flex items-center gap-4 flex-col xl:flex-row justify-center md:justify-between">
+                                <h2 class="text-lg font-bold max-w-5xl md:text-[30px] text-center xl:text-left dark:text-grayDark">
+                                    <?php echo get_sub_field("acf_flx_pi_ctass_section_title"); ?>
+                                </h2>
+                                <a href="<?php echo get_sub_field("acf_flx_pi_ctass_section_button_url"); ?>">
+                                    <button class="hover:scale-105 transition-all duration-500 relative z-10 group font-medium bg-black text-white text-sm md:text-lg rounded-2xl">
+                                        <div class="relative overflow-hidden">
+                                            <span class="group-hover:translate-y-full p-4 w-full h-full group-hover:rotate-[16deg] origin-bottom-left transition-all grid place-content-center duration-500 pointer-events-none">
+                                                <?php echo get_sub_field("acf_flx_pi_ctass_section_button_title"); ?>
+                                            </span>
+                                            <span
+                                                class="absolute bottom-full left-0 -rotate-[16deg] group-hover:rotate-0 origin-bottom-left w-full p-4 h-full grid place-content-center group-hover:translate-y-full transition-all duration-500 pointer-events-none"
+                                            >
+                                                <?php echo get_sub_field("acf_flx_pi_ctass_section_button_title"); ?>
+                                            </span>
+                                            <span class="absolute w-full h-10 bg-white/80 transition-all duration-300 -left-2/3 group-hover:left-3/4 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+                                        </div>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_pi_nfss_not_find_solution_section' ): 
+                ?>
+                    <!-- Solutions -->
+                    <div class="bg-[#fafafa] dark:bg-[#0D0A0A] mb-[70px]">
+                        <div class="bg-[#FAFAFA] dark:bg-[#0D0A0A] py-[60px] md:py-[100px]">
+                            <div class="max-w-screen-2xl mx-auto px-4">
+                                <div class="flex flex-col gap-5 items-center justify-center text-center">
+                                    <h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-criteria font-semibold dark:text-white text-grayDark leading-none text-center">
+                                        <?php echo get_sub_field("acf_flx_pi_nfss_section_title"); ?>
+                                    </h2>
+                                    <p class="text-sm md:text-xl xl:text-2xl xl:leading-10 max-w-5xl text-grayDark dark:text-white">
+                                        <?php echo get_sub_field("acf_flx_pi_nfss_section_sub_title"); ?>
+                                    </p>
+                                    <div
+                                        class="mt-[20px] lg:mt-[60px] text-left flex flex-col gap-5 lg:gap-0 lg:grid lg:grid-cols-2 lg:[&>*]:border-[#010101]/20 dark:[&>*]:border-primary/20 lg:[&>*:first-child]:pb-20 lg:[&>*:first-child]:border-r lg:[&>*:nth-child(2)]:border-b lg:[&>*:nth-child(2)>div]:ml-auto lg:[&>*:nth-child(3)]:border-r lg:[&>*:nth-child(3)]:pt-20 lg:[&>*:last-child>div]:ml-auto lg:[&>*:last-child]:pt-20 lg:[&>*:first-child]:border-b"
+                                    >
+                                        <?php
+                                            if( have_rows('acf_flx_pi_nfss_section_listing') ):
+                                                $cnt=1;
+                                                while( have_rows('acf_flx_pi_nfss_section_listing') ) : the_row();
+                                                    $class = "group pb-5 lg:pb-0 border-b";
+                                                    if( $cnt==3 )
+                                                    {
+                                                        $class = "group pb-5 lg:pb-0 border-b lg:border-b-0";
+                                                    }
+                                                    if( $cnt==4 )
+                                                    {
+                                                        $class = "group";
+                                                    }
+                                                    ?>
+                                                        <div class="<?php echo $class; ?>">
+                                                            <div class="flex flex-col items-center justify-center text-center lg:items-start lg:justify-start lg:text-left gap-1 lg:gap-2 lg:max-w-[80%]">
+                                                                <h4 class="lg:text-6xl text-2xl dark:text-primary font-bold lg:leading-[74px] relative overflow-hidden">
+                                                                    <span class="group-hover:translate-y-full w-full h-full group-hover:rotate-[0deg] origin-bottom-left transition-all grid duration-500 pointer-events-none"><?php echo get_sub_field("acf_flx_pi_nfss_listing_title"); ?></span>
+                                                                    <span class="absolute bottom-full left-0 -rotate-[0deg] group-hover:rotate-0 origin-bottom-left w-full h-full grid group-hover:translate-y-full transition-all duration-500 pointer-events-none">
+                                                                        <?php echo get_sub_field("acf_flx_pi_nfss_listing_title"); ?>
+                                                                    </span>
+                                                                </h4>
+                                                                <h5 class="text-black/60 dark:text-white lg:text-2xl font-bold relative overflow-hidden">
+                                                                    <span class="group-hover:translate-y-full w-full h-full group-hover:rotate-[0deg] origin-bottom-left transition-all grid duration-500 pointer-events-none"><?php echo get_sub_field("acf_flx_pi_nfss_listing_sub_title"); ?></span>
+                                                                    <span class="absolute bottom-full left-0 -rotate-[0deg] group-hover:rotate-0 origin-bottom-left w-full h-full grid group-hover:translate-y-full transition-all duration-500 pointer-events-none">
+                                                                        <?php echo get_sub_field("acf_flx_pi_nfss_listing_sub_title"); ?>
+                                                                    </span>
+                                                                </h5>
+                                                                <p class="text-grayDark leading-[24px] dark:text-white text-sm lg:text-lg lg:mt-3 font-medium lg:leading-8">
+                                                                    <?php echo get_sub_field("acf_flx_pi_nfss_listing_content"); ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    <?php
+                                                    $cnt++;
+                                                endwhile;
+                                            endif;
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_pi_nfss_not_find_solution_section_1' ): 
+                ?>
+                    <!-- Concept -->
+                    <div class="flex flex-col gap-5 lg:gap-20 px-5">
+                        <div class="flex flex-col gap-4 lg:gap-5 items-center justify-center text-center">
+                            <h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-criteria font-semibold dark:text-white text-grayDark leading-none text-center">
+                                <?php echo get_sub_field("acf_flx_pi_nfss_section_title"); ?>
+                            </h2>
+                            <p class="text-sm md:text-xl xl:text-2xl xl:leading-10 max-w-5xl text-grayDark dark:text-white">
+                                <?php echo get_sub_field("acf_flx_pi_nfss_section_sub_title"); ?>
+                            </p>
+                        </div>
+                        <div class="">
+                            <div class="swiper concept-slider">
+                                <div class="swiper-wrapper md:pb-[60px] pb-5 pl-[calc((100vw-1536px)/2)]">
+                                    <?php
+                                        if( have_rows('acf_flx_pi_nfss_section_listing') ):
+                                            while( have_rows('acf_flx_pi_nfss_section_listing') ) : the_row();
+                                                ?>
+                                                    <div class="swiper-slide sm:!w-[357px] !w-full max-w-full">
+                                                        <div class="flex flex-col gap-5 group hover:opacity-100 opacity-60 transition-opacity duration-500">
+                                                            <div
+                                                                class="lg:w-[100px] group-hover:border-transparent relative overflow-hidden flex items-center justify-center w-16 h-16 lg:h-[100px] rounded-full border-grayDark dark:border-white border-2 transition-all duration-500"
+                                                            >
+                                                                <span class="absolute transition-all z-0 duration-500 rounded-full top-0 left-0 w-full scale-0 h-full group-hover:scale-100 bg-primary opacity-0 group-hover:opacity-100"></span>
+
+                                                                <svg
+                                                                    class="dark:stroke-white relative z-10 stroke-grayDark group-hover:stroke-grayDark transition-all duration-500"
+                                                                    width="36"
+                                                                    height="36"
+                                                                    viewBox="0 0 36 36"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path
+                                                                        d="M16.1279 33.7499H19.9079C21.3479 33.7499 22.2779 32.7299 22.0079 31.4849L21.3929 28.77H14.6429L14.0279 31.4849C13.7579 32.6549 14.7779 33.7499 16.1279 33.7499Z"
+                                                                        stroke-width="2.25"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                    />
+                                                                    <path
+                                                                        d="M21.3908 28.755L23.9858 26.445C25.4408 25.155 25.5008 24.2549 24.3458 22.7999L19.7708 16.995C18.8108 15.78 17.2358 15.78 16.2758 16.995L11.7008 22.7999C10.5458 24.2549 10.5458 25.2 12.0608 26.445L14.6558 28.755"
+                                                                        stroke-width="2.25"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                    />
+                                                                    <path d="M18.0156 16.6799V20.475" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    <path
+                                                                        d="M18.7812 7.5H17.2812C16.4562 7.5 15.7812 6.825 15.7812 6V4.5C15.7812 3.675 16.4562 3 17.2812 3H18.7812C19.6063 3 20.2812 3.675 20.2812 4.5V6C20.2812 6.825 19.6063 7.5 18.7812 7.5Z"
+                                                                        stroke-width="2.25"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                    />
+                                                                    <path
+                                                                        d="M4.90625 21.255H6.40625C7.23125 21.255 7.90625 20.58 7.90625 19.755V18.255C7.90625 17.43 7.23125 16.7549 6.40625 16.7549H4.90625C4.08125 16.7549 3.40625 17.43 3.40625 18.255V19.755C3.40625 20.58 4.08125 21.255 4.90625 21.255Z"
+                                                                        stroke-width="2.25"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                    />
+                                                                    <path
+                                                                        d="M31.0938 21.255H29.5938C28.7687 21.255 28.0938 20.58 28.0938 19.755V18.255C28.0938 17.43 28.7687 16.7549 29.5938 16.7549H31.0938C31.9188 16.7549 32.5938 17.43 32.5938 18.255V19.755C32.5938 20.58 31.9188 21.255 31.0938 21.255Z"
+                                                                        stroke-width="2.25"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                    />
+                                                                    <path d="M15.78 5.34009C10.065 6.01509 5.625 10.8601 5.625 16.7551" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    <path d="M30.3762 16.7551C30.3762 10.8751 25.9662 6.04509 20.2812 5.34009" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="flex flex-col gap-4 relative">
+                                                                <h4 class="lg:text-2xl text-content font-bold dark:text-white">
+                                                                    <?php echo get_sub_field("acf_flx_pi_nfss_listing_title"); ?>
+                                                                </h4>
+                                                                <p class="leading-[1.62] text-content dark:text-white text-sm lg:text-base">
+                                                                    <?php echo get_sub_field("acf_flx_pi_nfss_listing_content"); ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                            endwhile;
+                                        endif;
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_pi_oss_our_services_section' ): 
+                ?>
+                    <div class="max-w-screen-2xl px-5 mx-auto w-full h-full">
+                        <div class="flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8 text-center">
+                            <h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+                               <?php echo get_sub_field("acf_flx_pi_oss_section_title"); ?>
+                            </h2>
+                            <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+                                <?php echo get_sub_field("acf_flx_pi_oss_section_sub_title"); ?>
+                            </p>
+                        </div>
+
+                        <div class="bg-transparent py-9 lg:py-[60px] opacity-100 gap-[51px] dark:bg-transparent flex justify-center items-center w-full">
+                            <button
+                                type="button"
+                                role="tab"
+                                aria-selected="true"
+                                data-state="active"
+                                class="text-lg relative transition-all opacity-50 font-bold group text-grayDark hover:opacity-100 dark:text-white duration-200 aria-selected:opacity-100"
+                                tabindex="-1"
+                                id="tab-1"
+                                value="UI/UX"
+                            >
+                                <div class="relative overflow-hidden">
+                                    <span class="group-hover:translate-y-full group-hover:rotate-[16deg] transition-all origin-bottom-left duration-500 inline-block pointer-events-none">Research</span>
+                                    <span class="absolute bottom-full left-0 -rotate-[16deg] group-hover:rotate-0 origin-bottom-left group-hover:translate-y-full transition-all duration-500 pointer-events-none">Research</span>
+                                </div>
+                                <span class="w-full scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 h-0.5 bg-primary absolute left-0 -bottom-1 rounded-full"></span>
+                            </button>
+
+                            <button
+                                type="button"
+                                role="tab"
+                                aria-selected="true"
+                                data-state="active"
+                                class="text-lg relative transition-all opacity-50 font-bold group text-grayDark hover:opacity-100 dark:text-white duration-200 aria-selected:opacity-100"
+                                tabindex="-1"
+                                value="product-innovation"
+                                id="tab-2"
+                            >
+                                <div class="relative overflow-hidden">
+                                    <span class="group-hover:translate-y-full group-hover:rotate-[16deg] transition-all origin-bottom-left duration-500 inline-block pointer-events-none">Design</span>
+                                    <span class="absolute bottom-full left-0 -rotate-[16deg] group-hover:rotate-0 origin-bottom-left group-hover:translate-y-full transition-all duration-500 pointer-events-none">Design</span>
+                                </div>
+                                <span class="w-full scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 h-0.5 bg-primary absolute left-0 -bottom-1 rounded-full"></span>
+                            </button>
+                            <button
+                                type="button"
+                                role="tab"
+                                aria-selected="true"
+                                data-state="active"
+                                class="text-lg relative transition-all opacity-50 font-bold group text-grayDark hover:opacity-100 dark:text-white duration-200 aria-selected:opacity-100"
+                                tabindex="-1"
+                                value="brand-identity"
+                                id="tab-2"
+                            >
+                                <div class="relative overflow-hidden">
+                                    <span class="group-hover:translate-y-full group-hover:rotate-[16deg] transition-all origin-bottom-left duration-500 inline-block pointer-events-none">Build</span>
+                                    <span class="absolute bottom-full left-0 -rotate-[16deg] group-hover:rotate-0 origin-bottom-left group-hover:translate-y-full transition-all duration-500 pointer-events-none">Build</span>
+                                </div>
+                                <span class="w-full scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 h-0.5 bg-primary absolute left-0 -bottom-1 rounded-full"></span>
+                            </button>
+                        </div>
+
+                        <div class="grid w-full grid-cols-[repeat(auto-fill,minmax(360px,1fr))] gap-4 lg:gap-[30px]">
+                            <?php
+                                if( have_rows('acf_flx_pi_oss_section_listing') ):
+                                    while( have_rows('acf_flx_pi_oss_section_listing') ) : the_row();
+                                        ?>
+                                            <div class="flex p-5 lg:p-10 flex-col rounded-[27.5px] lg:rounded-[40px] gap-2 lg:gap-3 hover:bg-transparent border border-transparent bg-[#FCFCFC] dark:bg-[#232020] transition-all duration-500 hover:border-primary">
+                                                <svg width="60" height="60" class="w-10 h-10 lg:w-[60px] lg:h-[60px] mb-2 lg:mb-0" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M30 55C43.8071 55 55 43.8071 55 30C55 16.1929 43.8071 5 30 5C16.1929 5 5 16.1929 5 30C5 43.8071 16.1929 55 30 55Z" stroke="#FFDD00" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M21.6965 29.775L25.8215 30.7999L23.4465 40.4002C22.8965 42.6502 23.9965 43.4 25.8965 42.075L38.8465 33.1001C40.4215 32.0001 40.1965 30.725 38.3215 30.25L34.1965 29.2251L36.5715 19.625C37.1215 17.375 36.0215 16.6251 34.1215 17.9501L21.1715 26.9251C19.5965 28.0251 19.8215 29.3 21.6965 29.775Z"
+                                                        stroke="#FFDD00"
+                                                        stroke-width="3.75"
+                                                        stroke-miterlimit="10"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+                                                <h4 class="lg:text-[30px] font-extrabold leading-[1.33] dark:text-white text-grayDark">
+                                                    <?php echo get_sub_field("acf_flx_pi_oss_listing_sub_title"); ?>
+                                                </h4>
+                                                <p class="leading-[1.62] lg:mt-2 text-xs lg:text-base text-content dark:text-white">
+                                                    <?php echo get_sub_field("acf_flx_pi_oss_listing_content"); ?>
+                                                </p>
+                                            </div>
+                                        <?php
+                                    endwhile;
+                                endif;
+                            ?>                            
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_uxc_odds_our_dashboard_design_section' ): 
+                ?>
+                    <!-- dashboard section -->
+                    <div class="max-w-screen-2xl px-5 mx-auto h-full">
+                        <div class="flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8 text-center">
+                            <h2 class="text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+                                <?php echo get_sub_field("acf_flx_uxc_odds_section_title"); ?>
+                            </h2>
+                            <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+                                <?php echo get_sub_field("acf_flx_uxc_odds_section_content"); ?>
+                            </p>
+                            <div class="flex flex-col md:flex-row gap-8 items-center text-left mt-4 md:mt-0">
+                                <?php
+                                    $case_study = get_sub_field("acf_flx_uxc_odds_select_case_study");
+
+                                    if( $case_study )
+                                    {
+                                        foreach( $case_study as $case_study_list )
+                                        {
+                                            $listImage = get_stylesheet_directory_uri()."/assets/images/dashboard-img-1.png";
+
+                                            if( has_post_thumbnail($case_study_list->ID) )
+                                            {
+                                                $listImage = get_the_post_thumbnail_url( $case_study_list->ID, 'full' );
+                                            }
+                                            ?>
+                                                <div class="flex-1">
+                                                    <div class="md:h-96 xl:h-[870px] rounded-2xl w-full overflow-hidden">
+                                                        <img src="<?php echo $listImage; ?>" alt="img" loading="lazy" class="w-full h-full object-cover" />
+                                                    </div>
+                                                    <p class="mt-6 mb-1 text-lg font-semibold dark:text-primary">
+                                                        Case Study
+                                                    </p>
+                                                    <h4 class="text-2xl font-semibold"><?php echo get_the_title( $case_study_list->ID ); ?></h4>
+                                                    <p class="mt-3 text-base text-[#28303F] dark:text-[#fff] opacity-80">
+                                                        <?php echo get_the_excerpt( $case_study_list->ID ); ?>
+                                                    </p>
+                                                    <a href="<?php echo get_the_permalink( $case_study_list->ID); ?>">
+                                                        <button
+                                                            class="relative capitalize text-sm px-4 py-2 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg mt-5 group font-semibold text-black bg-primary transition-all duration-300 undefined"
+                                                        >
+                                                            <span>Read More</span><span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            <?php
+                                        }
+                                    }
+                                ?>                                  
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_uxc_kwps_knowledge_we_provide_section' ): 
+                ?>
+                    <!-- Knowledge  -->
+                    <div class="max-w-screen-2xl mx-auto px-4 w-full">
+                        <div class="flex flex-col gap-5 items-center justify-center text-center">
+                            <h2 class="flex flex-wrap items-center text-center justify-center gap-2 text-3xl sm:text-4xl xl:text-[54px] font-criteria font-bold !leading-snug max-w-5xl undefined" style="opacity: 1;">
+                                <?php echo get_sub_field("acf_flx_uxc_kwps_section_title"); ?>
+                            </h2>
+                            <p class="md:text-xl xl:text-2xl xl:leading-10 max-w-5xl text-grayDark dark:text-white">
+                                <?php echo get_sub_field("acf_flx_uxc_kwps_section_sub_title"); ?>
+                            </p>
+                            <div class="mt-[60px] gap-32 hidden xl:grid grid-cols-3 w-full text-left">
+                                <div class="col-span-1 w-full flex flex-col gap-10">
+                                    <div class="w-full h-[424px] rounded-r-[36px] relative overflow-hidden transition-all duration-700">
+                                        <?php
+                                            if( have_rows('acf_flx_uxc_kwps_section_listing') ):
+                                                $cnt=1;
+                                                while( have_rows('acf_flx_uxc_kwps_section_listing') ) : the_row();
+                                                    $listing_image = WPCustomClass::GetAcfImage(get_sub_field("acf_flx_uxc_kwps_listing_image"),"tab-1.png");
+                                                    if( $cnt == 1 )
+                                                    {
+                                                        ?>
+                                                            <img alt="dark" width="460" height="466" class="accordion-tabs-img show absolute top-0 left-0 w-auto h-full object-contain transition-all duration-700" src="<?php echo $listing_image["image_url"]; ?>" />
+                                                        <?php
+                                                    }
+                                                    else
+                                                    {
+                                                        ?>
+                                                            <img alt="dark" width="460" height="466" class="accordion-tabs-img absolute top-0 left-0 w-auto h-full object-contain transition-all duration-700" src="<?php echo $listing_image["image_url"]; ?>" />
+                                                        <?php
+                                                    }
+                                                    $cnt++;
+                                                endwhile;
+                                            endif;
+                                        ?>
+                                    </div>
+                                    <div class="flex relative gap-6">
+                                        <span class="w-1 h-8 bg-black dark:bg-primary"></span>
+                                        <p class="text-lg leading-6">
+                                            <?php echo get_sub_field("acf_flx_uxc_kwps_image_content"); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 w-full">
+                                    <div class="accordion-tabs space-y-5">
+                                        <?php
+                                            if( have_rows('acf_flx_uxc_kwps_section_listing') ):
+                                                while( have_rows('acf_flx_uxc_kwps_section_listing') ) : the_row();
+                                                    ?>
+                                                        <div class="accordion-tabs-item transition-all duration-500 rounded-lg border dark:border-[#393939] dark:bg-[#232020] bg-[#FAFAFA] border-[#DEDEDE] overflow-hidden">
+                                                            <h3 class="flex">
+                                                                <button
+                                                                    type="button"
+                                                                    class="accordion-tabs-button flex flex-1 items-center justify-between font-medium duration-500 transition-all text-md md:text-xl dark:text-white/60 text-left p-4 sm:pt-[18px] sm:px-6"
+                                                                >
+                                                                    <?php echo get_sub_field("acf_flx_uxc_kwps_listing_title"); ?>
+
+                                                                    <svg width="18" class="transition-all duration-500 stroke-grayDark/60 dark:stroke-white/60" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M1.5 1.5L9 9L16.5 1.5" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </button>
+                                                            </h3>
+                                                            <div class="accordion-tabs-content text-sm transition-all duration-500">
+                                                                <div class="p-4 sm:pb-[18px] sm:px-6 pt-0 dark:text-white text-grayDark/80 text-lg leading-7 md:leading-8">
+                                                                    <?php echo get_sub_field("acf_flx_uxc_kwps_listing_content"); ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php
+                                                endwhile;
+                                            endif;
+                                        ?>                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile View -->
+                            <div class="xl:hidden">
+                                <div class="swiper tabs-slider">
+                                    <div class="swiper-wrapper md:pb-[60px] pb-10">
+                                        <?php
+                                            if( have_rows('acf_flx_uxc_kwps_section_listing') ):
+                                                while( have_rows('acf_flx_uxc_kwps_section_listing') ) : the_row();
+                                                    $listing_image = WPCustomClass::GetAcfImage(get_sub_field("acf_flx_uxc_kwps_listing_image"),"tab-1.png");
+                                                    ?>
+                                                        <div class="swiper-slide !w-full">
+                                                            <div class="w-full h-auto mb-5 rounded-lg overflow-hidden">
+                                                                <img src="<?php echo $listing_image["image_url"]; ?>" alt="" class="w-full h-full object-contain" />
+                                                            </div>
+                                                            <div class="flex flex-col gap-2">
+                                                                <h3 class="font-semibold dark:text-white/60">
+                                                                    <?php echo get_sub_field("acf_flx_uxc_kwps_listing_title"); ?>
+                                                                </h3>
+                                                                <p class="text-sm leading-[24px] dakr:text-white">
+                                                                    <?php echo get_sub_field("acf_flx_uxc_kwps_listing_content"); ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    <?php
+                                                endwhile;
+                                            endif;
+                                        ?>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <div class="swiper-pagination slider-pagination md:hidden block"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_uxc_wcs_why_choose_section' ): 
+                ?>
+                    <!-- Why Choose Section -->
+                    <div class="max-w-screen-2xl px-5 mx-auto">
+                        <div class="flex flex-col rounded-2xl border-[#C6C6C6] dark:border-[#4b4b4b] py-2 md:py-[60px] border relative">
+                            <!-- Background Lines -->
+                            <svg class="absolute pointer-events-none top-0 left-0 w-full h-auto" xmlns="http://www.w3.org/2000/svg" width="1508" height="832" viewBox="0 0 1508 832" fill="none">
+                                <g opacity="0.1">
+                                    <rect opacity="0.125" width="75" height="832" fill="url(#paint0_linear_1452_2068)" />
+                                    <rect opacity="0.15" x="95" width="76" height="822.195" fill="url(#paint1_linear_1452_2068)" />
+                                    <rect opacity="0.3" x="191" width="75" height="799.784" fill="url(#paint2_linear_1452_2068)" />
+                                    <rect opacity="0.45" x="286" width="75" height="668.121" fill="url(#paint3_linear_1452_2068)" />
+                                    <rect opacity="0.45" x="390" width="75" height="832" fill="url(#paint4_linear_1452_2068)" />
+                                    <rect opacity="0.3" x="485" width="76" height="822.195" fill="url(#paint5_linear_1452_2068)" />
+                                    <rect opacity="0.15" x="581" width="75" height="799.784" fill="url(#paint6_linear_1452_2068)" />
+                                    <rect opacity="0.125" x="676" width="75" height="668.121" fill="url(#paint7_linear_1452_2068)" />
+                                </g>
+                                <g opacity="0.1">
+                                    <rect opacity="0.125" x="757" width="75" height="832" fill="url(#paint8_linear_1452_2068)" />
+                                    <rect opacity="0.15" x="852" width="76" height="822.195" fill="url(#paint9_linear_1452_2068)" />
+                                    <rect opacity="0.3" x="948" width="75" height="799.784" fill="url(#paint10_linear_1452_2068)" />
+                                    <rect opacity="0.45" x="1043" width="75" height="668.121" fill="url(#paint11_linear_1452_2068)" />
+                                    <rect opacity="0.45" x="1147" width="75" height="832" fill="url(#paint12_linear_1452_2068)" />
+                                    <rect opacity="0.3" x="1242" width="76" height="822.195" fill="url(#paint13_linear_1452_2068)" />
+                                    <rect opacity="0.15" x="1338" width="75" height="799.784" fill="url(#paint14_linear_1452_2068)" />
+                                    <rect opacity="0.125" x="1433" width="75" height="668.121" fill="url(#paint15_linear_1452_2068)" />
+                                </g>
+                                <defs>
+                                    <linearGradient id="paint0_linear_1452_2068" x1="37.5" y1="0" x2="37.5" y2="832" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_1452_2068" x1="133" y1="0" x2="133" y2="822.195" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint2_linear_1452_2068" x1="228.5" y1="0" x2="228.5" y2="799.784" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint3_linear_1452_2068" x1="323.5" y1="0" x2="323.5" y2="668.121" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint4_linear_1452_2068" x1="427.5" y1="0" x2="427.5" y2="832" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint5_linear_1452_2068" x1="523" y1="0" x2="523" y2="822.195" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint6_linear_1452_2068" x1="618.5" y1="0" x2="618.5" y2="799.784" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint7_linear_1452_2068" x1="713.5" y1="0" x2="713.5" y2="668.121" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint8_linear_1452_2068" x1="794.5" y1="0" x2="794.5" y2="832" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint9_linear_1452_2068" x1="890" y1="0" x2="890" y2="822.195" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint10_linear_1452_2068" x1="985.5" y1="0" x2="985.5" y2="799.784" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint11_linear_1452_2068" x1="1080.5" y1="0" x2="1080.5" y2="668.121" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint12_linear_1452_2068" x1="1184.5" y1="0" x2="1184.5" y2="832" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint13_linear_1452_2068" x1="1280" y1="0" x2="1280" y2="822.195" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint14_linear_1452_2068" x1="1375.5" y1="0" x2="1375.5" y2="799.784" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint15_linear_1452_2068" x1="1470.5" y1="0" x2="1470.5" y2="668.121" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0" />
+                                        <stop offset="0.541667" stop-color="#3C3C3C" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="flex flex-col px-5 items-center justify-center gap-5 text-center">
+                                <div class="overflow-hidden">
+                                    <div class="" style="opacity: 1; transform: none;">
+                                        <?php echo get_sub_field("acf_flx_uxc_wcs_section_image"); ?>
+                                    </div>
+                                </div>
+                                <h2 class="flex flex-wrap items-center text-center justify-center gap-2 text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold font-criteria text-grayDark dark:text-white max-w-5xl" style="opacity: 1;">
+                                    <?php echo get_sub_field("acf_flx_uxc_wcs_section_title"); ?>
+                                </h2>
+                                <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+                                    <?php echo get_sub_field("acf_flx_uxc_wcs_section_content"); ?>
+                                </p>
+                                <p class="text-lg leading-normal max-w-3xl font-bold opacity-50 text-black dark:text-white/50">
+                                    <?php echo get_sub_field("acf_flx_uxc_wcs_section_sub_title"); ?>
+                                </p>
+                            </div>
+                            <div class="grid mx-auto xl:grid-cols-[repeat(3,305px)] px-5 xl:px-[100px] gap-[30px] mt-[38px]">
+                                <?php
+                                  if( have_rows('acf_flx_uxc_wcs_section_listing') ):
+                                    while( have_rows('acf_flx_uxc_wcs_section_listing') ) : the_row();
+                                        ?>
+                                            <div class="flex flex-col rounded-[20px] py-10 px-[30px] gap-4 border border-[#C6C6C6] dark:border-[#5a5a5a]">
+                                                <div>
+                                                   <p class="text-[44px] max-w-3xl pb-[30px] font-extrabold text-grayDark dark:text-primary leading-[1.22] border-b border-[#C6C6C6] dark:border-[#5a5a5a]">
+                                                      <?php echo get_sub_field("acf_flx_uxc_wcs_listing_title"); ?>
+                                                   </p>
+                                                   <p class="pt-[30px] text-grayDark text-xl font-criteria font-extrabold leading-[1.5] dark:text-primary">
+                                                      <?php echo get_sub_field("acf_flx_uxc_wcs_listing_sub_title"); ?>
+                                                   </p>
+                                                </div>
+                                                <p class="text-grayDark dark:text-white leading-[1.8]">
+                                                   <?php echo get_sub_field("acf_flx_uxc_wcs_listing_content"); ?>
+                                                </p>
+                                             </div>
+                                        <?php
+                                    endwhile;
+                                  endif;
+                                ?>
+                            </div>
+                            <div class="flex flex-col items-center justify-center mt-[100px] gap-8 text-center px-2 md:px-[60px]">
+                                <h2 class="text-2xl md:text-4xl font-criteria text-grayDark dark:text-white leading-tight font-semibold max-w-2xl"><?php echo get_sub_field("acf_flx_uxc_wcs_experience_section_title"); ?></h2>
+                                <div class="dark:border bg-[#ffffff] shadow-lg dark:shadow-none border-none dark:bg-[#2C2C2C] border-grayDark gap-2 md:gap-5 p-2 md:p-5 grid xl:grid-cols-3 rounded">
+                                    <?php
+                                      if( have_rows('acf_flx_uxc_wcs_experience_section_listing') ):
+                                        while( have_rows('acf_flx_uxc_wcs_experience_section_listing') ) : the_row();
+                                            ?>
+                                                <div class="flex flex-col p-4 dark:border border-none border-grayDark rounded items-center bg-[#fbfbfb] dark:bg-[#090606] gap-4 justify-center text-center">
+                                                   <h4 class="text-6xl text-grayDark dark:text-primary font-bold font-criteria"><?php echo get_sub_field("acf_flx_hp_wcs_listing_value"); ?><span class="font-sans font-bold">+</span></h4>
+                                                   <p class="text-lg leading-normal max-w-3xl font-bold text-grayDark dark:text-white font-criteria">
+                                                      <?php echo get_sub_field("acf_flx_hp_wcs_listing_title"); ?>
+                                                   </p>
+                                                   <p class="text-base leading-[1.87] font- max-w-3xl text-content dark:text-white font-light">
+                                                      <?php echo get_sub_field("acf_flx_hp_wcs_listing_content"); ?>
+                                                   </p>
+                                                </div>
+                                            <?php
+                                        endwhile;
+                                      endif;
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_uxc_cbs_creative_blog_section' ): 
+                ?>
+                    <div class="max-w-screen-2xl mx-auto px-4 w-full">
+                        <div class="w-[885px] max-w-full mx-auto text-center md:pb-[60px] pb-10 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8">
+                            <h2 class="dark:text-white text-grayDark lg:pb-0 pb-4 text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold">
+                                <?php echo get_field("acf_opt_fbs_bs_section_title", "option"); ?>
+                            </h2>
+                            <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+                                <?php echo get_field("acf_opt_fbs_bs_section_sub_title", "option"); ?>
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap -mx-5">
+                            <?php
+                                if( get_field("acf_opt_fbs_bs_select_blogs", 'option') )
+                                {
+                                    foreach( get_field("acf_opt_fbs_bs_select_blogs", 'option') as $blog_listing )
+                                    {
+                                        $post_image = get_stylesheet_directory_uri()."/assets/images/blog-1.png";
+                                        if( has_post_thumbnail($blog_listing->ID) )
+                                        {
+                                            $post_image = get_the_post_thumbnail_url( $blog_listing->ID, 'large' );
+                                        }
+                                        $category_detail = get_the_category($blog_listing->ID);
+                                        ?>
+                                            <div class="md:w-1/3 w-full md:pb-0 pb-4 px-5 max-w-full">
+                                                <div class="bg-white dark:bg-[#282525] lg:hover:-translate-y-4 h-full shadow-cardShadow group rounded-[20px] border border-transparent hover:bg-transparent hover:border-primary transition-all duration-500">
+                                                    <div class="object-cover object-center overflow-hidden rounded-tl-[20px] rounded-tr-[20px]">
+                                                        <img class="object-cover group-hover:scale-105 transition-all duration-500 object-center w-full" src="<?php echo $post_image; ?>" alt="blog" />
+                                                    </div>
+                                                    <div class="lg:p-[28px] p-5">
+                                                        <div class="flex justify-between items-center pb-6">
+                                                            <p class="md:text-base text-xs font-semibold md:leading-7 leading-[1.71] text-grayDark dark:text-primary capitalize">
+                                                                <?php echo $category_detail[0]->cat_name; ?>
+                                                            </p>
+                                                            <p class="md:text-base text-xs font-semibold md:leading-7 leading-[1.71] text-grayDark dark:text-primary capitalize">
+                                                                <?php echo get_the_date("d M"); ?>
+                                                            </p>
+                                                        </div>
+                                                        <p class="lg:text-xl text-sm font-semibold lg:leading-[1.9] leading-6 text-content dark:text-white">
+                                                            <?php echo get_the_title($blog_listing->ID); ?>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php
+                                    }
+                                }
+                            ?> 
+                        </div>
+                        <div class="text-center md:pt-10 pt-5">
+                            <a href="<?php echo site_url( 'blog' ); ?>">
+                                <button class="relative capitalize leading-[1.6] overflow-hidden px-6 py-4 z-10 hover:shadow-gradientShadow hover:scale-105 rounded-lg group font-bold text-base text-black bg-primary transition-all duration-300">
+                                    <span>Check Our Latest Blogs</span>
+                                    <span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_uxc_fs_faq_section' ): 
+                ?>
+                    <div class="flex flex-col max-w-screen-xl px-5 w-full mx-auto gap-16">
+                        <div class="flex flex-col items-center justify-center h-full gap-4 sm:gap-6 md:gap-8 text-center">
+                            <h2 class="flex flex-wrap items-center text-center justify-center gap-2 text-lg sm:text-2xl md:text-4xl xl:text-[54px] font-semibold max-w-5xl dark:text-white" style="opacity: 1;">
+                                <?php echo get_sub_field("acf_flx_uxc_fs_section_title"); ?>
+                            </h2>
+                            <p class="text-sm leading-6 sm:text-base sm:leading-8 md:text-lg md:leading-9 lg:text-xl xl:text-2xl xl:leading-10 md:max-w-5xl text-grayDark dark:text-white">
+                                <?php echo get_sub_field("acf_flx_uxc_fs_section_sub_title"); ?>
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-[60px]">
+                            <div>
+                                <div class="w-full">
+                                    <?php
+                                        if( have_rows('acf_flx_uxc_fs_section_listing') ):
+                                            while( have_rows('acf_flx_uxc_fs_section_listing') ) : the_row();
+                                                ?>
+                                                    <div class="rounded-[4px] mb-5 bg-white dark:bg-[#282525] shadow-cardShadow">
+                                                        <button type="button" class="accordion-button w-full flex items-center justify-between font-semibold text-grayDark dark:text-white text-sm md:text-xl md:leading-[1.5] leading-[1.7] md:p-6 p-5">
+                                                            <?php echo get_sub_field("acf_flx_uxc_fs_listing_title"); ?>
+                                                            <em class="accordion-icon inline-block leading-[0] min-w-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="default-icon dark:text-primary"
+                                                                >
+                                                                    <path d="M5 12h14"></path>
+                                                                    <path d="M12 5v14"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="show-icon hidden dark:text-primary"
+                                                                >
+                                                                    <path d="M5 12h14"></path>
+                                                                </svg>
+                                                            </em>
+                                                        </button>
+                                                        <div class="accordion-content overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+                                                            <div class="md:p-6 p-4">
+                                                                <p class="text-lg leading-[1.8] opacity-80 font-normal text-[#5A5A5A] dark:text-[#ddd]">
+                                                                    <?php echo get_sub_field("acf_flx_uxc_fs_listing_detail"); ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                            endwhile;
+                                        endif;
+                                    ?>
+
+                                </div>
+                            </div>
+                            <div
+                                class="w-full h-[150px] px-4 hover:scale-105 hover:rotate-2 transition-all duration-500 hover:shadow-2xl rounded-lg overflow-hidden flex items-center justify-center text-white"
+                                style="background: linear-gradient(137deg, #ffdd00, #8f00ff, #ffdd00, #8f00ff); background-size: 400% 100%; animation: moveGradient 40s linear infinite;"
+                            >
+                                <h2 class="text-2xl lg:text-[32px] font-bold text-center">
+                                    <?php echo get_sub_field("acf_flx_uxc_fs_section_footer_content"); ?>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_uxc_cctas_common_cta_section' ): 
+                $section_image = WPCustomClass::GetAcfImage(get_sub_field("acf_flx_uxc_cctas_section_image"),"cta-img.png");
+                ?>
+                    <!-- Common CTA -->
+                    <div class="px-5 2xl:px-0">
+                        <div class="lg:h-[480px] py-[30px] justify-center text-center lg:text-left lg:justify-start max-w-screen-2xl mx-auto bg-gray-400 rounded-[24px] lg:rounded-[34px] overflow-hidden w-full px-[60px] flex items-center relative">
+                            <div class="absolute top-0 left-0 z-0 w-full h-full">
+                                <img src="<?php echo $section_image["image_url"]; ?>" class="w-full h-full object-cover" alt="<?php echo $section_image["image_alt"]; ?>" />
+                            </div>
+                            <div class="absolute top-0 left-0 z-10 w-full h-full bg-black opacity-30"></div>
+                            <div class="flex flex-col gap-4 relative z-10 text-white max-w-screen-md items-center lg:items-start lg:gap-[22px]">
+                                <h2 class="text-lg lg:text-[40px] font-bold font-criteria lg:leading-[1.6]"><?php echo get_sub_field("acf_flx_uxc_cctas_section_title"); ?></h2>
+                                <p class="text-sm lg:text-lg leading-[1.88]">
+                                    <?php echo get_sub_field("acf_flx_uxc_cctas_section_sub_title"); ?>
+                                </p>
+                                <a href="<?php echo get_sub_field("acf_flx_uxc_cctas_section_button_url"); ?>">
+                                    <button
+                                        class="relative capitalize px-4 lg:px-6 py-2 lg:py-4 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-xl lg:rounded-lg group font-bold text-xs lg:text-sm leading-[24px] sm:text-base sm:leading-[26px] text-black bg-primary transition-all duration-300"
+                                    >
+                                        <span><?php echo get_sub_field("acf_flx_uxc_cctas_section_button_title"); ?></span><span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            elseif( get_row_layout() == 'acf_flx_uxc_fs_form_section' ): 
+                ?>
+                    <form id="frmcontactform" method="post">
+                        <div class="flex flex-col">
+                            <div class="py-32 px-4 relative flex items-center justify-center text-white xl:h-screen">
+                                <img class="absolute top-0 left-0 w-full h-full object-cover -z-10 dark:block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/black-bg.png" />
+                                <img class="absolute top-0 left-0 w-full h-full object-cover -z-10 dark:hidden" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/light-bg.png" />
+                                <div class="absolute top-0 left-0 w-full h-full object-cover hidden dark:block" style="background: radial-gradient(50% 50% at 50% 0.5%, #303030 0%, #00000080 100%);"></div>
+                                <div class="absolute top-0 left-0 w-full h-full object-cover -z-20 bg-white dark:bg-black"></div>
+                                <div
+                                    class="w-full flex flex-col gap-[60px] xl:flex-row justify-between relative z-10 max-w-screen-2xl px-5 py-4 lg:p-[60px] xl:h-[669px] mx-auto rounded-xl backdrop-blur-[6.5px] border-[1.5px] dark:border-[#333333] bg-white dark:bg-[#000c] shadow-[0px_20px_28px_0px_#0000000d] dark:bg-[radial-gradient(50%_50%_at_50%_0.5%,transparent,#000000cc_100%)]"
+                                >
+                                    <div class="flex flex-col flex-1 items-start gap-6">
+                                        <h2 class="flex flex-wrap font-criteria gap-2 text-[40px] font-semibold leading-[1.6] max-w-2xl text-black dark:text-white text-left items-start justify-start">
+                                            <?php echo get_field("acf_opt_fbs_cfs_section_title", "option"); ?>
+                                        </h2>
+                                        <p class="text-lg text-black/80 font-light dark:text-white leading-[1.6] max-w-2xl text-left items-start justify-start">
+                                            <?php echo get_field("acf_opt_fbs_cfs_section_sub_title", "option"); ?>
+                                        </p>
+                                        <div class="flex flex-col sm:grid grid-cols-2 w-full gap-10 sm:gap-12 mt-[32px]">
+                                            <div class="input-group relative w-full">
+                                                <input
+                                                    type="text"
+                                                    placeholder=""
+                                                    class="p-0 pb-2 text-lg w-full border-b text-black dark:text-white dark:focus:border-primary outline-0 border-[#E3E3E3] dark:border-white bg-transparent leading-6 transition-all duration-500"
+                                                    name="txtfullname"
+                                                    required
+                                                    id="txtfullname"
+                                                />
+                                                <label class="dark:text-white text-black pb-2 p-0 text-lg absolute top-0 flex left-0 leading-6 transition-all duration-500 pointer-events-none">
+                                                    <span style="transition-delay: 0s;" class="block">F</span><span style="transition-delay: 0.03s;" class="block">u</span><span style="transition-delay: 0.06s;" class="block">l</span>
+                                                    <span style="transition-delay: 0.09s;" class="block">l</span><span class="block">&nbsp;</span><span style="transition-delay: 0.12s;" class="block">N</span>
+                                                    <span style="transition-delay: 0.15s;" class="block">a</span><span style="transition-delay: 0.18s;" class="block">m</span><span style="transition-delay: 0.21s;" class="block">e</span>
+                                                    <span class="block">&nbsp;</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-group relative w-full">
+                                                <input
+                                                    type="email"
+                                                    placeholder=""
+                                                    class="p-0 pb-2 text-lg w-full border-b text-black dark:text-white dark:focus:border-primary outline-0 border-[#E3E3E3] dark:border-white bg-transparent leading-6 transition-all duration-500"
+                                                    required
+                                                    data-dashlane-rid="7871695ceadaa159"
+                                                    data-dashlane-classification="other"
+                                                    name="txtemail"
+                                                    id="txtemail"
+                                                />
+                                                <label class="dark:text-white text-black pb-2 text-lg p-0 absolute top-0 flex left-0 leading-6 transition-all duration-500 pointer-events-none">
+                                                    <span style="transition-delay: 0s;" class="block">E</span><span style="transition-delay: 0.03s;" class="block">m</span><span style="transition-delay: 0.06s;" class="block">a</span>
+                                                    <span style="transition-delay: 0.09s;" class="block">i</span><span style="transition-delay: 0.12s;" class="block">l</span><span class="block">&nbsp;</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-span-2 sm:mt-3">
+                                                <div class="input-group relative w-full">
+                                                    <input
+                                                        type="text"
+                                                        placeholder=""
+                                                        class="p-0 pb-2 text-lg w-full border-b text-black dark:text-white dark:focus:border-primary outline-0 border-[#E3E3E3] dark:border-white bg-transparent leading-6 transition-all duration-500"
+                                                        required
+                                                        name="txtaboutproject"
+                                                        id="txtaboutproject"
+                                                    />
+                                                    <label class="dark:text-white text-black pb-2 text-lg p-0 absolute top-0 flex left-0 leading-6 transition-all duration-500 pointer-events-none">
+                                                        <span style="transition-delay: 0s;" class="block">A</span><span style="transition-delay: 0.03s;" class="block">b</span><span style="transition-delay: 0.06s;" class="block">o</span>
+                                                        <span style="transition-delay: 0.09s;" class="block">u</span><span style="transition-delay: 0.12s;" class="block">t</span><span class="block">&nbsp;</span>
+                                                        <span style="transition-delay: 0.21s;" class="block">P</span><span style="transition-delay: 0.24s;" class="block">r</span><span style="transition-delay: 0.27s;" class="block">o</span>
+                                                        <span style="transition-delay: 0.3s;" class="block">j</span><span style="transition-delay: 0.32999999999999996s;" class="block">e</span>
+                                                        <span style="transition-delay: 0.36s;" class="block">c</span><span style="transition-delay: 0.39s;" class="block">t</span><span class="block">&nbsp;</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="g-recaptcha" data-sitekey="6LdTi10qAAAAACZH2COJySpOxo5SKzYF8K5emSqN"></div>
+                                        <div class="flex flex-col md:flex-row gap-8 justify-between items-start w-full mt-auto">
+                                            <div class="sm:text-lg text-black dark:text-white sm:leading-9 max-w-96">
+                                                <span>By sending this form I confirm that I have read and accept the</span>
+
+                                                <a class="text-base relative inline-flex font-bold text-[#72B5E0] dark:text-primary group transition-all duration-500" href="<?php echo site_url( 'privacy-policy' ); ?>">
+                                                    <div class="relative overflow-hidden">
+                                                        <span class="group-hover:translate-y-full w-full h-full group-hover:rotate-[0deg] origin-bottom-left transition-all grid place-content-center duration-500 pointer-events-none">
+                                                            Privacy Policy
+                                                        </span>
+                                                        <span
+                                                            class="absolute bottom-full left-0 -rotate-[0deg] group-hover:rotate-0 origin-bottom-left w-full h-full grid place-content-center group-hover:translate-y-full transition-all duration-500 pointer-events-none"
+                                                        >
+                                                            Privacy Policy
+                                                        </span>
+                                                    </div>
+                                                    <span class="absolute -bottom-0.5 left-0 w-full h-[1px] origin-right group-hover:origin-left scale-x-0 bg-[#72B5E0] dark:bg-primary transition-transform duration-500 group-hover:scale-x-100"></span>
+                                                </a>
+                                            </div>
+                                            <button type="submit" 
+                                                class="relative capitalize text-base px-6 py-3 z-10 overflow-hidden hover:shadow-gradientShadow hover:scale-105 rounded-lg group font-bold text-black bg-primary transition-all duration-300 w-full sm:w-auto" id="btnsubmit" 
+                                            >
+                                                <span class="btnsubmitspan">Send a message</span>
+                                                <span class="absolute w-full h-10 bg-white transition-all duration-300 -left-2/3 group-hover:left-2/3 group-hover:bottom-full pointer-events-none blur-2xl -bottom-full rotate-45"></span>
+                                            </button>
+                                            <input type="hidden" name="action" value="act_store_contact_form_data">                                         
+                                        </div>
+                                        <div>
+                                            <h4 id="successmessage" class="messagenot"></h4>
+                                            <h4 id="errormessage" class="messagenot"></h4>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:w-[524px] gap-10 h-full border dark:border-grayDark border-transparent flex flex-col justify-between rounded-lg p-4 md:p-10 bg-primary dark:bg-[radial-gradient(50%_50%_at_50%_0.5%,#171717_0%,#000000_100%)]"
+                                    >
+                                        <div class="flex flex-col gap-4">
+                                            <h3 class="text-2xl md:text-[40px] font-bold dark:font-light md:leading-[1.25] uppercase text-black dark:text-white">
+                                                <?php echo get_field("acf_opt_fbs_cfs_client_say_title", "option"); ?>
+                                            </h3>
+                                            <div class="w-full h-[1px] bg-black/50 dark:bg-[#A8A7A7]"></div>
+                                            <p class="sm:text-xl font-medium dark:font-normal sm:leading-[1.8] text-[#010101] dark:text-white">
+                                                <?php echo get_field("acf_opt_fbs_cfs_client_say_detail", "option"); ?>
+                                            </p>
+                                        </div>
+                                        <div class="flex gap-4 items-center">
+                                            <div class="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-full bg-black/10 dark:bg-white/10"></div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="sm:text-[26px] font-extrabold leading-[1.26] capitalize text-grayDark dark:text-white"><?php echo get_field("acf_opt_fbs_cfs_client_name", "option"); ?></p>
+                                                <p class="text-black dark:text-white/50 text-lg leading-[1.83] capitalize">
+                                                    <?php echo get_field("acf_opt_fbs_cfs_client_designation", "option"); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <?php
+            endif;
+        endwhile;
+    endif;
+get_footer();
+?>

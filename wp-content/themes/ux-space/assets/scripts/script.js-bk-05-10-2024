@@ -1,0 +1,256 @@
+// Toggle Dark Mode JS
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const storedTheme = localStorage.getItem("theme");
+  if (storedTheme) {
+    applyTheme(storedTheme);
+  }
+});
+
+document.getElementById("toggleButton").addEventListener("click", function () {
+  document.documentElement.classList.toggle("dark");
+  const currentTheme = document.documentElement.classList.contains("dark")
+    ? "dark"
+    : "light";
+  localStorage.setItem("theme", currentTheme);
+});
+
+// Tabs JS
+document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+  // Show only the first tab and panel by default
+  tabs.forEach((tab, index) => {
+    if (index === 0) {
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("data-state", "active");
+    } else {
+      tab.setAttribute("aria-selected", "false");
+      tab.setAttribute("data-state", "inactive");
+    }
+  });
+
+  tabPanels.forEach((panel, index) => {
+    if (index === 0) {
+      panel.classList.add("opacity-100", "visible", "pointer-events-auto");
+      panel.classList.remove("opacity-0", "invisible", "pointer-events-none");
+      panel.setAttribute("data-state", "active");
+    } else {
+      panel.classList.add("opacity-0", "invisible", "pointer-events-none");
+      panel.classList.remove("opacity-100", "visible", "pointer-events-auto");
+      panel.setAttribute("data-state", "inactive");
+    }
+  });
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      const tabValue = tab.getAttribute("value");
+
+      // Remove active state from all tabs and panels
+      tabs.forEach((t) => {
+        t.setAttribute("aria-selected", "false");
+        t.setAttribute("data-state", "inactive");
+      });
+      tabPanels.forEach((panel) => {
+        panel.classList.add("opacity-0", "invisible", "pointer-events-none");
+        panel.classList.remove("opacity-100", "visible", "pointer-events-auto");
+        panel.setAttribute("data-state", "inactive");
+      });
+
+      // Add active state to the clicked tab and corresponding panel
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("data-state", "active");
+      const activePanel = document.querySelector(
+        `[role="tabpanel"][value="${tabValue}"]`
+      );
+      activePanel.classList.add(
+        "opacity-100",
+        "visible",
+        "pointer-events-auto"
+      );
+      activePanel.classList.remove(
+        "opacity-0",
+        "invisible",
+        "pointer-events-none"
+      );
+      activePanel.setAttribute("data-state", "active");
+    });
+  });
+});
+
+// work mega menu JS
+document.getElementById("workMenu").addEventListener("click", function (e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const megaMenu = document.getElementById("megaMenuId");
+  megaMenu.classList.toggle("mega-menu"); // Toggle the 'hidden' class
+});
+
+// Slider JS
+var swiper = new Swiper(".testimonial-slider", {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: ".next-btn",
+    prevEl: ".prev-btn",
+  },
+  pagination: {
+    el: ".slider-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    641: {
+      slidesPerView: 2,
+      spaceBetween: 40,
+    },
+    991: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1199: {
+      slidesPerView: 4,
+      spaceBetween: 40,
+    },
+  },
+});
+
+// Slider Expertise JS
+var swiper = new Swiper(".expertise-slider", {
+  slidesPerView: "auto",
+  spaceBetween: 30,
+  loop: true,
+  breakpoints: {
+    641: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+    1380: {
+      slidesPerView: 4,
+    },
+  },
+});
+
+// Fresh Slider JS
+var swiper = new Swiper(".fresh-slider", {
+  loop: true,
+  freeMode: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
+
+
+const tlProcessScroll = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".process--scroll",
+    start: "20%",
+    end: "100%",
+    scrub: true,
+    markers: false,
+  },
+});
+
+tlProcessScroll
+  .fromTo(".span1", { x: -300 }, { x: 0 })
+  .fromTo(".span2", { x: -100 }, { x: 0 }, "<")
+  .fromTo(".span3", { x: 200 }, { x: 0 }, "<");
+
+const tlGalleryScroll = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".gallery--scroll",
+    start: "-48%",
+    end: "36%",
+    scrub: true,
+    markers: false,
+  },
+});
+
+tlGalleryScroll
+  .fromTo(
+    ".gallery--scroll-img-1",
+    { y: 0, rotate: 0 },
+    { y: 200, x: -400, rotate: -16 },
+    "<"
+  )
+  .fromTo(
+    ".gallery--scroll-img-2",
+    { y: 0, rotate: 0 },
+    { y: 200, x: 400, rotate: 16 },
+    "<"
+  )
+  .fromTo(
+    ".gallery--scroll-img-3",
+    { y: 0, rotate: 0 },
+    { y: -200, x: -400, rotate: -16 },
+    "<"
+  )
+  .fromTo(
+    ".gallery--scroll-img-4",
+    { y: 0, rotate: 0 },
+    { y: -200, x: 400, rotate: 16 },
+    "<"
+  )
+  .fromTo(
+    ".gallery--scroll-text",
+    { y: 100, opacity: 0 },
+    { y: 0, opacity: 1 },
+    "=-0.5"
+  );
+
+
+  const tlTextScroll = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".text--scroll",
+      start: "-1000%",
+      end: "-100%",
+      scrub: true,
+      markers: false,
+    },
+  });
+
+  tlTextScroll.fromTo(".text--scroll", {
+    backgroundPosition: "0% 0%",
+  }, { backgroundPosition: "-100% 0%" });
+
+  // Accordion JS
+  // Select all accordion buttons and content areas
+const accordionButtons = document.querySelectorAll('.accordion-button');
+const accordionContents = document.querySelectorAll('.accordion-content');
+const accordionIcons = document.querySelectorAll('.accordion-icon');
+
+// Add event listeners to all accordion buttons
+accordionButtons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    // Close all other accordions
+    accordionContents.forEach((content, contentIndex) => {
+      if (contentIndex !== index) {
+        content.style.maxHeight = null; // Close other accordions
+        accordionIcons[contentIndex].style.transform = 'rotate(0deg)'; // Reset other icons
+      }
+    });
+
+    // Toggle the clicked accordion
+    const content = accordionContents[index];
+    const icon = accordionIcons[index];
+
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null; // Close accordion
+      icon.style.transform = 'rotate(0deg)'; // Reset icon
+    } else {
+      content.style.maxHeight = content.scrollHeight + 'px'; // Open accordion
+      icon.style.transform = 'rotate(180deg)'; // Rotate icon
+    }
+  });
+});
+
