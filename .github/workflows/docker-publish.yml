@@ -9,7 +9,7 @@ on:
 
 jobs:
   docker-build-test-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       IMAGE_TAG: latest   
     steps:
