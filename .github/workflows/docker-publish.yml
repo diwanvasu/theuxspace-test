@@ -27,11 +27,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/xpro_saas-v2-visitor-fe:${IMAGE_TAG} .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-app:${IMAGE_TAG} .
 
       - name: Push Docker image to Docker Hub
         run: |  
-          docker push ${{ secrets.DOCKER_USERNAME }}/xpro_saas-v2-visitor-fe:${IMAGE_TAG}
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-app:${IMAGE_TAG}
       - name: Deploye the website
         run: |
-          docker run -it -d -p 8200:80 --name uxspace ${{ secrets.DOCKER_USERNAME }}/xpro_saas-v2-visitor-fe:${IMAGE_TAG}
+          docker run -it -d -p 8200:80 --name uxspace ${{ secrets.DOCKER_USERNAME }}/my-app:${IMAGE_TAG}
