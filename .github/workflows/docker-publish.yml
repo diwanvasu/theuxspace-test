@@ -32,3 +32,6 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: |  
           docker push ${{ secrets.DOCKER_USERNAME }}/xpro_saas-v2-visitor-fe:${IMAGE_TAG}
+      - name: Deploye the website
+        run: |
+          docker run -it -d -p 8200:80 --name uxspace ${{ secrets.DOCKER_USERNAME }}/xpro_saas-v2-visitor-fe:${IMAGE_TAG}
