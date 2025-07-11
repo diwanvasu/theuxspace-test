@@ -9,8 +9,9 @@ on:
 
 jobs:
   docker-build-test-push:
-    runs-on: self-hosted
-
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_TAG: latest   
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,8 +27,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
+          docker build -f Dockerfile-Dev -t ${{ secrets.DOCKER_USERNAME }}/xpro_saas-v2-visitor-fe:${IMAGE_TAG} .
 
       - name: Push Docker image to Docker Hub
-        run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+        run: |  
+          docker push ${{ secrets.DOCKER_USERNAME }}/xpro_saas-v2-visitor-fe:${IMAGE_TAG}
